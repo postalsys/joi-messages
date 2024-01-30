@@ -1,0 +1,623 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2\n"
+
+# Label: any.custom
+#: any.custom
+msgid "{{#label}} failed custom validation because {{#error.message}}"
+msgstr "{{#label}}はカスタムバリデーションに失敗した"
+
+# Label: any.default
+#: any.default
+msgid "{{#label}} threw an error when running default method"
+msgstr "デフォルト・メソッドの実行時に {{#label}} がエラーをスローした"
+
+# Label: any.failover
+#: any.failover
+msgid "{{#label}} threw an error when running failover method"
+msgstr "フェイルオーバー・メソッドの実行時に{{#label}}エラーが発生しました"
+
+# Label: any.invalid
+#: any.invalid
+msgid "{{#label}} contains an invalid value"
+msgstr "{{#label}}に無効な値が含まれている"
+
+# Label: any.only
+#: any.only
+msgid ""
+"{{#label}} must be {if(#valids.length == 1, \"\", \"one of \")}{{#valids}}"
+msgstr ""
+"{{#label}}は{if(#valids.length == 1, \"\", \"one of \")}{{#valids}}でなければ"
+"ならない"
+
+# Label: any.ref
+#: any.ref
+msgid "{{#label}} {{#arg}} references {{:#ref}} which {{#reason}}"
+msgstr "{{#label}}1]}は{{:#ref}}を参照し、{{#reason}}は{{#arg}}を参照する"
+
+# Label: any.required
+#: any.required
+msgid "{{#label}} is required"
+msgstr "{{#label}}が必要"
+
+# Label: object.unknown
+#: object.unknown
+msgid "{{#label}} is not allowed"
+msgstr "{{#label}}は許されない"
+
+# Label: alternatives.all
+#: alternatives.all
+msgid "{{#label}} does not match all of the required types"
+msgstr "{{#label}}は必要なすべての型にマッチしない"
+
+# Label: array.includes
+#: array.includes
+msgid "{{#label}} does not match any of the allowed types"
+msgstr "{{#label}}は許可されたタイプのいずれにもマッチしない"
+
+# Label: alternatives.one
+#: alternatives.one
+msgid "{{#label}} matches more than one allowed type"
+msgstr "{{#label}}は複数の許容タイプにマッチする"
+
+# Label: alternatives.types
+#: alternatives.types
+msgid "{{#label}} must be one of {{#types}}"
+msgstr "{{#label}}は{{#types}}のいずれかでなければならない"
+
+# Label: array.base
+#: array.base
+msgid "{{#label}} must be an array"
+msgstr "{{#label}}は配列でなければならない"
+
+# Label: array.excludes
+#: array.excludes
+msgid "{{#label}} contains an excluded value"
+msgstr "{{#label}}が除外値を含む"
+
+# Label: array.hasKnown
+#: array.hasKnown
+msgid ""
+"{{#label}} does not contain at least one required match for type {:"
+"#patternLabel}"
+msgstr ""
+"{{#label}}がタイプ{:#patternLabel}の必須一致を少なくとも1つ含んでいない"
+
+# Label: array.hasUnknown
+#: array.hasUnknown
+msgid "{{#label}} does not contain at least one required match"
+msgstr "{{#label}}が少なくとも1つの必須一致を含まない"
+
+# Label: array.includesRequiredBoth
+#: array.includesRequiredBoth
+msgid ""
+"{{#label}} does not contain {{#knownMisses}} and {{#unknownMisses}} other "
+"required value(s)"
+msgstr "{{#label}}は{{#knownMisses}}と{{#unknownMisses}}を含まない"
+
+# Label: array.includesRequiredKnowns
+#: array.includesRequiredKnowns
+msgid "{{#label}} does not contain {{#knownMisses}}"
+msgstr "{{#label}}は{{#knownMisses}}を含まない"
+
+# Label: array.includesRequiredUnknowns
+#: array.includesRequiredUnknowns
+msgid "{{#label}} does not contain {{#unknownMisses}} required value(s)"
+msgstr "{{#label}}に{{#unknownMisses}}の必須値が含まれていない"
+
+# Label: array.length
+#: array.length
+msgid "{{#label}} must contain {{#limit}} items"
+msgstr "{{#label}}には{{#limit}}項目が含まれていなければならない"
+
+# Label: array.max
+#: array.max
+msgid "{{#label}} must contain less than or equal to {{#limit}} items"
+msgstr "{{#label}}には{{#limit}}以下の項目が含まれていなければならない"
+
+# Label: array.min
+#: array.min
+msgid "{{#label}} must contain at least {{#limit}} items"
+msgstr "{{#label}}には少なくとも{{#limit}}項目が含まれていなければならない"
+
+# Label: array.orderedLength
+#: array.orderedLength
+msgid "{{#label}} must contain at most {{#limit}} items"
+msgstr "{{#label}}は最大でも{{#limit}}の項目を含まなければならない"
+
+# Label: array.sort
+#: array.sort
+msgid "{{#label}} must be sorted in {#order} order by {{#by}}"
+msgstr "{{#label}}は{{#by}}によって{#order}順にソートされなければならない"
+
+# Label: array.sort.mismatching
+#: array.sort.mismatching
+msgid "{{#label}} cannot be sorted due to mismatching types"
+msgstr "型が不一致のため{{#label}}はソートできない"
+
+# Label: array.sort.unsupported
+#: array.sort.unsupported
+msgid "{{#label}} cannot be sorted due to unsupported type {#type}"
+msgstr "{{#label}}はサポートされていない型{#type}のためソートできない"
+
+# Label: array.sparse
+#: array.sparse
+msgid "{{#label}} must not be a sparse array item"
+msgstr "{{#label}}は疎な配列項目であってはならない"
+
+# Label: array.unique
+#: array.unique
+msgid "{{#label}} contains a duplicate value"
+msgstr "{{#label}}に重複値が含まれている"
+
+# Label: boolean.base
+#: boolean.base
+msgid "{{#label}} must be a boolean"
+msgstr "{{#label}}はブール値でなければならない"
+
+# Label: date.base
+#: date.base
+msgid "{{#label}} must be a valid date"
+msgstr "{{#label}}は有効な日付でなければならない"
+
+# Label: date.format
+#: date.format
+msgid ""
+"{{#label}} must be in {msg(\"date.format.\" + #format) || #format} format"
+msgstr ""
+"{{#label}}は{msg(\"date.format.\" + #format)||#format}形式でなければならない"
+
+# Label: date.greater
+#: date.greater
+msgid "{{#label}} must be greater than {{:#limit}}"
+msgstr "{{#label}}は{{:#limit}}より大きくなければならない"
+
+# Label: date.less
+#: date.less
+msgid "{{#label}} must be less than {{:#limit}}"
+msgstr "{{#label}}は{{:#limit}}より小さくなければならない"
+
+# Label: date.max
+#: date.max
+msgid "{{#label}} must be less than or equal to {{:#limit}}"
+msgstr "{{#label}}は{{:#limit}}以下でなければならない"
+
+# Label: date.min
+#: date.min
+msgid "{{#label}} must be greater than or equal to {{:#limit}}"
+msgstr "{{#label}}は{{:#limit}}以上でなければならない"
+
+# Label: date.format.iso
+#: date.format.iso
+msgid "ISO 8601 date"
+msgstr "ISO 8601日付"
+
+# Label: date.format.javascript
+#: date.format.javascript
+msgid "timestamp or number of milliseconds"
+msgstr "タイムスタンプまたはミリ秒数"
+
+# Label: date.format.unix
+#: date.format.unix
+msgid "timestamp or number of seconds"
+msgstr "タイムスタンプまたは秒数"
+
+# Label: object.and
+#: object.and
+msgid ""
+"{{#label}} contains {{#presentWithLabels}} without its required peers "
+"{{#missingWithLabels}}"
+msgstr ""
+"0]}は{{#presentWithLabels}}を含み、{{#missingWithLabels}}は必要なピア"
+"{{#presentWithLabels}}を含まない"
+
+# Label: object.assert
+#: object.assert
+msgid ""
+"{{#label}} is invalid because {if(#subject.key, `\"` + #subject.key + `\" "
+"failed to ` + (#message || \"pass the assertion test\"), #message || \"the "
+"assertion failed\")}"
+msgstr ""
+"{if(#subject.key, `\"` + #subject.key + `\" failed to ` + (#message || \"ア"
+"サーションテストに合格\"), #message || \"アサーションに失敗\")}のため、"
+"{{#label}}は無効です"
+
+# Label: object.base
+#: object.base
+msgid "{{#label}} must be of type {{#type}}"
+msgstr "{{#label}}は{{#type}}型でなければならない"
+
+# Label: object.instance
+#: object.instance
+msgid "{{#label}} must be an instance of {{:#type}}"
+msgstr "{{#label}}は{{:#type}}のインスタンスでなければならない"
+
+# Label: object.length
+#: object.length
+msgid "{{#label}} must have {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
+msgstr ""
+"{{#label}}は{{#limit}}キー{if(#limit == 1, \"\", \"s\")}を持っていなければな"
+"らない"
+
+# Label: object.max
+#: object.max
+msgid ""
+"{{#label}} must have less than or equal to {{#limit}} key{if(#limit == 1, "
+"\"\", \"s\")}"
+msgstr ""
+"{{#label}}は{{#limit}}以下でなければならないキー{if(#limit == 1, \"\", \"s"
+"\")}"
+
+# Label: object.min
+#: object.min
+msgid ""
+"{{#label}} must have at least {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
+msgstr ""
+"{{#label}}は少なくとも{{#limit}}キー{if(#limit == 1, \"\", \"s\")}を持ってい"
+"なければならない"
+
+# Label: object.missing
+#: object.missing
+msgid "{{#label}} must contain at least one of {{#peersWithLabels}}"
+msgstr ""
+"{{#label}}は{{#peersWithLabels}}を少なくとも1つ含んでいなければならない"
+
+# Label: object.nand
+#: object.nand
+msgid ""
+"{{:#mainWithLabel}} must not exist simultaneously with {{#peersWithLabels}}"
+msgstr "{{#label}}は{{#peersWithLabels}}と同時に存在してはならない"
+
+# Label: object.oxor
+#: object.oxor
+msgid ""
+"{{#label}} contains a conflict between optional exclusive peers "
+"{{#peersWithLabels}}"
+msgstr ""
+"{{#label}}には、オプションの排他的ピア{{#peersWithLabels}}間の競合が含まれて"
+"いる"
+
+# Label: object.pattern.match
+#: object.pattern.match
+msgid "{{#label}} keys failed to match pattern requirements"
+msgstr "{{#label}}キーがパターン要件にマッチしなかった"
+
+# Label: object.refType
+#: object.refType
+msgid "{{#label}} must be a Joi reference"
+msgstr "{{#label}}はジョイ・レファレンスでなければならない"
+
+# Label: object.regex
+#: object.regex
+msgid "{{#label}} must be a RegExp object"
+msgstr "{{#label}}はRegExpオブジェクトでなければならない"
+
+# Label: object.rename.multiple
+#: object.rename.multiple
+msgid ""
+"{{#label}} cannot rename {{:#from}} because multiple renames are disabled "
+"and another key was already renamed to {{:#to}}"
+msgstr ""
+"{{#label}}は{{:#from}}の名前を変更できない。なぜなら、複数の名前の変更が無効"
+"になっており、別のキーがすでに{{:#to}}にリネームされているからである"
+
+# Label: object.rename.override
+#: object.rename.override
+msgid ""
+"{{#label}} cannot rename {{:#from}} because override is disabled and target "
+"{{:#to}} exists"
+msgstr ""
+"オーバーライドが無効でターゲット{{:#to}}が存在するため、{{#label}}は{{:"
+"#from}}の名前を変更できない"
+
+# Label: object.schema
+#: object.schema
+msgid "{{#label}} must be a Joi schema of {{#type}} type"
+msgstr "{{#label}}は{{#type}}型のジョイ・スキーマでなければならない"
+
+# Label: object.with
+#: object.with
+msgid "{{:#mainWithLabel}} missing required peer {{:#peerWithLabel}}"
+msgstr "{{#label}}必須ピア{{:#peerWithLabel}}が見つからない"
+
+# Label: object.without
+#: object.without
+msgid "{{:#mainWithLabel}} conflict with forbidden peer {{:#peerWithLabel}}"
+msgstr "{{#label}}は禁止されたピア{{:#peerWithLabel}}と衝突する"
+
+# Label: object.xor
+#: object.xor
+msgid ""
+"{{#label}} contains a conflict between exclusive peers {{#peersWithLabels}}"
+msgstr "{{#label}}は排他的ピア{{#peersWithLabels}}間の競合を含んでいる"
+
+# Label: function.arity
+#: function.arity
+msgid "{{#label}} must have an arity of {{#n}}"
+msgstr "{{#label}}は{{#n}}のアリティを持たなければならない"
+
+# Label: function.class
+#: function.class
+msgid "{{#label}} must be a class"
+msgstr "{{#label}}はクラスでなければならない"
+
+# Label: function.maxArity
+#: function.maxArity
+msgid "{{#label}} must have an arity lesser or equal to {{#n}}"
+msgstr "{{#label}}は{{#n}}以下のアリティでなければならない"
+
+# Label: function.minArity
+#: function.minArity
+msgid "{{#label}} must have an arity greater or equal to {{#n}}"
+msgstr "{{#label}}は{{#n}}以上のアリティを持たなければならない"
+
+# Label: number.base
+#: number.base
+msgid "{{#label}} must be a number"
+msgstr "{{#label}}は数字でなければならない"
+
+# Label: number.greater
+#: number.greater
+msgid "{{#label}} must be greater than {{#limit}}"
+msgstr "{{#label}}は{{#limit}}より大きくなければならない"
+
+# Label: number.infinity
+#: number.infinity
+msgid "{{#label}} cannot be infinity"
+msgstr "{{#label}}を無限大にすることはできない"
+
+# Label: number.integer
+#: number.integer
+msgid "{{#label}} must be an integer"
+msgstr "{{#label}}は整数でなければならない"
+
+# Label: number.less
+#: number.less
+msgid "{{#label}} must be less than {{#limit}}"
+msgstr "{{#label}}は{{#limit}}より小さくなければならない"
+
+# Label: number.max
+#: number.max
+msgid "{{#label}} must be less than or equal to {{#limit}}"
+msgstr "{{#label}}は{{#limit}}以下でなければならない"
+
+# Label: number.min
+#: number.min
+msgid "{{#label}} must be greater than or equal to {{#limit}}"
+msgstr "{{#label}}は{{#limit}}以上でなければならない"
+
+# Label: number.multiple
+#: number.multiple
+msgid "{{#label}} must be a multiple of {{#multiple}}"
+msgstr "{{#label}}は{{#multiple}}の倍数でなければならない"
+
+# Label: number.negative
+#: number.negative
+msgid "{{#label}} must be a negative number"
+msgstr "{{#label}}は負数でなければならない"
+
+# Label: number.port
+#: number.port
+msgid "{{#label}} must be a valid port"
+msgstr "{{#label}}は有効なポートでなければならない"
+
+# Label: number.positive
+#: number.positive
+msgid "{{#label}} must be a positive number"
+msgstr "{{#label}}は正の数でなければならない"
+
+# Label: number.precision
+#: number.precision
+msgid "{{#label}} must have no more than {{#limit}} decimal places"
+msgstr "{{#label}}の小数点以下桁数は{{#limit}}以下でなければならない"
+
+# Label: number.unsafe
+#: number.unsafe
+msgid "{{#label}} must be a safe number"
+msgstr "{{#label}}は安全な数字でなければならない"
+
+# Label: string.alphanum
+#: string.alphanum
+msgid "{{#label}} must only contain alpha-numeric characters"
+msgstr "{{#label}}は英数字のみ"
+
+# Label: string.base
+#: string.base
+msgid "{{#label}} must be a string"
+msgstr "{{#label}}は文字列でなければならない"
+
+# Label: string.base64
+#: string.base64
+msgid "{{#label}} must be a valid base64 string"
+msgstr "{{#label}}は有効なbase64文字列でなければならない"
+
+# Label: string.creditCard
+#: string.creditCard
+msgid "{{#label}} must be a credit card"
+msgstr "{{#label}}はクレジットカードでなければならない"
+
+# Label: string.dataUri
+#: string.dataUri
+msgid "{{#label}} must be a valid dataUri string"
+msgstr "{{#label}}は有効なdataUri文字列でなければなりません"
+
+# Label: string.domain
+#: string.domain
+msgid "{{#label}} must contain a valid domain name"
+msgstr "{{#label}}には有効なドメイン名が含まれていなければならない"
+
+# Label: string.email
+#: string.email
+msgid "{{#label}} must be a valid email"
+msgstr "{{#label}}は有効なEメールでなければなりません"
+
+# Label: string.empty
+#: string.empty
+msgid "{{#label}} is not allowed to be empty"
+msgstr "{{#label}}が空であることは許されない"
+
+# Label: string.guid
+#: string.guid
+msgid "{{#label}} must be a valid GUID"
+msgstr "{{#label}}は有効なGUIDでなければならない"
+
+# Label: string.hex
+#: string.hex
+msgid "{{#label}} must only contain hexadecimal characters"
+msgstr "{{#label}}には16進数の文字のみを含めること"
+
+# Label: string.hexAlign
+#: string.hexAlign
+msgid "{{#label}} hex decoded representation must be byte aligned"
+msgstr ""
+"{{#label}}16進数でデコードされた表現は、バイト・アラインされていなければなら"
+"ない"
+
+# Label: string.hostname
+#: string.hostname
+msgid "{{#label}} must be a valid hostname"
+msgstr "{{#label}}は有効なホスト名でなければならない"
+
+# Label: string.ip
+#: string.ip
+msgid "{{#label}} must be a valid ip address with a {{#cidr}} CIDR"
+msgstr "{{#label}}は{{#cidr}}の有効なIPアドレスでなければならない。CIDR"
+
+# Label: string.ipVersion
+#: string.ipVersion
+msgid ""
+"{{#label}} must be a valid ip address of one of the following versions "
+"{{#version}} with a {{#cidr}} CIDR"
+msgstr ""
+"{{#label}}は、次のいずれかのバージョンの有効なIPアドレス{{#version}}と"
+"{{#cidr}}でなければならない。CIDR"
+
+# Label: string.isoDate
+#: string.isoDate
+msgid "{{#label}} must be in iso format"
+msgstr "{{#label}}はisoフォーマットでなければならない"
+
+# Label: string.isoDuration
+#: string.isoDuration
+msgid "{{#label}} must be a valid ISO 8601 duration"
+msgstr "{{#label}}は有効なISO 8601デュレーションでなければならない"
+
+# Label: string.length
+#: string.length
+msgid "{{#label}} length must be {{#limit}} characters long"
+msgstr "{{#label}}の長さは{{#limit}}文字でなければならない"
+
+# Label: string.lowercase
+#: string.lowercase
+msgid "{{#label}} must only contain lowercase characters"
+msgstr "{{#label}}は小文字のみ"
+
+# Label: string.max
+#: string.max
+msgid ""
+"{{#label}} length must be less than or equal to {{#limit}} characters long"
+msgstr "{{#label}}の長さは{{#limit}}文字以下でなければならない"
+
+# Label: string.min
+#: string.min
+msgid "{{#label}} length must be at least {{#limit}} characters long"
+msgstr "{{#label}}の長さは少なくとも{{#limit}}文字でなければならない"
+
+# Label: string.normalize
+#: string.normalize
+msgid "{{#label}} must be unicode normalized in the {{#form}} form"
+msgstr "{{#label}}は{{#form}}形式でユニコード正規化されなければならない"
+
+# Label: string.token
+#: string.token
+msgid "{{#label}} must only contain alpha-numeric and underscore characters"
+msgstr "{{#label}}には英数字とアンダースコアのみを含める"
+
+# Label: string.pattern.base
+#: string.pattern.base
+msgid ""
+"{{#label}} with value {:[.]} fails to match the required pattern: {{#regex}}"
+msgstr "値{:[.]}の{{#label}}は必須パターンにマッチしない：{{#regex}}"
+
+# Label: string.pattern.name
+#: string.pattern.name
+msgid "{{#label}} with value {:[.]} fails to match the {{#name}} pattern"
+msgstr "値{:[.]}の{{#label}}は{{#name}}パターンにマッチせず"
+
+# Label: string.pattern.invert.base
+#: string.pattern.invert.base
+msgid "{{#label}} with value {:[.]} matches the inverted pattern: {{#regex}}"
+msgstr "値{:[.]}の{{#label}}は反転パターンにマッチする：{{#regex}}"
+
+# Label: string.pattern.invert.name
+#: string.pattern.invert.name
+msgid "{{#label}} with value {:[.]} matches the inverted {{#name}} pattern"
+msgstr "値{:[.]}の{{#label}}は、反転した{{#name}}パターンに一致する"
+
+# Label: string.trim
+#: string.trim
+msgid "{{#label}} must not have leading or trailing whitespace"
+msgstr "{先頭または末尾に空白があってはならない"
+
+# Label: string.uri
+#: string.uri
+msgid "{{#label}} must be a valid uri"
+msgstr "{{#label}}は有効なuriでなければならない"
+
+# Label: string.uriCustomScheme
+#: string.uriCustomScheme
+msgid ""
+"{{#label}} must be a valid uri with a scheme matching the {{#scheme}} pattern"
+msgstr ""
+"{{#label}}は{{#scheme}}パターンにマッチするスキームを持つ有効なuriでなければ"
+"ならない"
+
+# Label: string.uriRelativeOnly
+#: string.uriRelativeOnly
+msgid "{{#label}} must be a valid relative uri"
+msgstr "{{#label}}は有効な相対URIでなければならない"
+
+# Label: string.uppercase
+#: string.uppercase
+msgid "{{#label}} must only contain uppercase characters"
+msgstr "{{#label}}は大文字のみ"
+
+# Label: symbol.base
+#: symbol.base
+msgid "{{#label}} must be a symbol"
+msgstr "{{#label}}は記号でなければならない"
+
+# Label: symbol.map
+#: symbol.map
+msgid "{{#label}} must be one of {{#map}}"
+msgstr "{{#label}}は{{#map}}のいずれかでなければならない"
+
+# Label: binary.base
+#: binary.base
+msgid "{{#label}} must be a buffer or a string"
+msgstr "{{#label}}はバッファか文字列でなければならない"
+
+# Label: binary.length
+#: binary.length
+msgid "{{#label}} must be {{#limit}} bytes"
+msgstr "{{#label}}は{{#limit}}バイトでなければならない"
+
+# Label: binary.max
+#: binary.max
+msgid "{{#label}} must be less than or equal to {{#limit}} bytes"
+msgstr "{{#label}}は{{#limit}}バイト以下でなければならない"
+
+# Label: binary.min
+#: binary.min
+msgid "{{#label}} must be at least {{#limit}} bytes"
+msgstr "{{#label}}は少なくとも{{#limit}}バイトでなければならない"

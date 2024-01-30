@@ -1,0 +1,22 @@
+{
+    "name": "@postalsys/joi-messages",
+    "version": "1.0.0",
+    "description": "Extract translatable messages from Joi",
+    "main": "index.js",
+    "scripts": {
+        "pot": "node gen-pot.js",
+        "update": "rm -rf node_modules package-lock.json && ncu -u && npm install"
+    },
+    "keywords": [],
+    "author": "Andris Reinman",
+    "license": "MIT",
+    "devDependencies": {
+        "eslint-config-nodemailer": "1.2.0",
+        "eslint-config-prettier": "9.1.0",
+        "npm-check-updates": "16.14.14",
+        "joi": "17.12.1"
+    },
+    "dependencies": {
+        "gettext-parser": "7.0.1"
+    }
+}
