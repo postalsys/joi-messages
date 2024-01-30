@@ -18,5 +18,9 @@
     },
     "dependencies": {
         "gettext-parser": "7.0.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/postalsys/joi-messages.git"
     }
 }
