@@ -1,16 +1,7 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 3.2\n"
 
 # Label: any.custom
 #: any.custom
@@ -85,7 +76,8 @@ msgstr ""
 # Label: array.hasKnown
 #: array.hasKnown
 msgid ""
-"{{#label}} does not contain at least one required match for type {:#patternLabel}"
+"{{#label}} does not contain at least one required match for type "
+"{:#patternLabel}"
 msgstr ""
 
 # Label: array.hasUnknown
@@ -215,9 +207,9 @@ msgstr ""
 # Label: object.assert
 #: object.assert
 msgid ""
-"{{#label}} is invalid because {if(#subject.key, `\"` + #subject.key + `\" failed "
-"to ` + (#message || \"pass the assertion test\"), #message || \"the assertion "
-"failed\")}"
+"{{#label}} is invalid because {if(#subject.key, `\"` + #subject.key + `\" "
+"failed to ` + (#message || \"pass the assertion test\"), #message || \"the "
+"assertion failed\")}"
 msgstr ""
 
 # Label: object.base
@@ -238,8 +230,8 @@ msgstr ""
 # Label: object.max
 #: object.max
 msgid ""
-"{{#label}} must have less than or equal to {{#limit}} key{if(#limit == 1, \"\", "
-"\"s\")}"
+"{{#label}} must have less than or equal to {{#limit}} key{if(#limit == 1, "
+"\"\", \"s\")}"
 msgstr ""
 
 # Label: object.min
@@ -282,15 +274,15 @@ msgstr ""
 # Label: object.rename.multiple
 #: object.rename.multiple
 msgid ""
-"{{#label}} cannot rename {{:#from}} because multiple renames are disabled and "
-"another key was already renamed to {{:#to}}"
+"{{#label}} cannot rename {{:#from}} because multiple renames are disabled "
+"and another key was already renamed to {{:#to}}"
 msgstr ""
 
 # Label: object.rename.override
 #: object.rename.override
 msgid ""
-"{{#label}} cannot rename {{:#from}} because override is disabled and target {{:"
-"#to}} exists"
+"{{#label}} cannot rename {{:#from}} because override is disabled and target "
+"{{:#to}} exists"
 msgstr ""
 
 # Label: object.schema
@@ -543,7 +535,8 @@ msgstr ""
 # Label: string.uriCustomScheme
 #: string.uriCustomScheme
 msgid ""
-"{{#label}} must be a valid uri with a scheme matching the {{#scheme}} pattern"
+"{{#label}} must be a valid uri with a scheme matching the {{#scheme}} "
+"pattern"
 msgstr ""
 
 # Label: string.uriRelativeOnly
