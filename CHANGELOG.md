@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/postalsys/joi-messages/compare/v1.0.1...v1.0.2) (2024-04-12)
+
+
+### Bug Fixes
+
+* **deps:** Bumped deps ([954295d](https://github.com/postalsys/joi-messages/commit/954295d4ec76e53817dce8482ec40037b2e815d9))
+
 ## [1.0.1](https://github.com/postalsys/joi-messages/compare/v1.0.0...v1.0.1) (2024-01-30)
 
 
