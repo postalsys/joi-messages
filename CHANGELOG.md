@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/postalsys/joi-messages/compare/v1.0.2...v1.0.3) (2025-01-29)
+
+
+### Bug Fixes
+
+* **lang:** Added polish translations ([0b45261](https://github.com/postalsys/joi-messages/commit/0b4526114e109fad34afb959c29075f456f54482))
+
 ## [1.0.2](https://github.com/postalsys/joi-messages/compare/v1.0.1...v1.0.2) (2024-04-12)
 
 
