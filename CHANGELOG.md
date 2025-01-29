@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/postalsys/joi-messages/compare/v1.0.3...v1.0.4) (2025-01-29)
+
+
+### Bug Fixes
+
+* Added PL translations PO & MO ([#5](https://github.com/postalsys/joi-messages/issues/5)) ([1544a99](https://github.com/postalsys/joi-messages/commit/1544a99a8dfafdba42d86997728e1a25c80d5443))
+
 ## [1.0.3](https://github.com/postalsys/joi-messages/compare/v1.0.2...v1.0.3) (2025-01-29)
 
 
