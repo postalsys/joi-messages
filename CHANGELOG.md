@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/postalsys/joi-messages/compare/v1.0.4...v1.0.5) (2025-04-28)
+
+
+### Bug Fixes
+
+* Added NL translations ([5f2da58](https://github.com/postalsys/joi-messages/commit/5f2da5825043f843a01e5aa34b34f2724d76bb67))
+
 ## [1.0.4](https://github.com/postalsys/joi-messages/compare/v1.0.3...v1.0.4) (2025-01-29)
 
 
