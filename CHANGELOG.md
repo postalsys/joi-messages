@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/postalsys/joi-messages/compare/v1.0.5...v1.1.0) (2026-09-12)
+
+
+### Features
+
+* Update messages for Joi 18 and complete all translations ([e67c9bc](https://github.com/postalsys/joi-messages/commit/e67c9bc1156df8651f2fc4ed3f4e03ffd99fed59))
+
 ## [1.0.5](https://github.com/postalsys/joi-messages/compare/v1.0.4...v1.0.5) (2025-04-28)
 
 
