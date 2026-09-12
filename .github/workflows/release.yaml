@@ -2,9 +2,6 @@ on:
     push:
         branches:
             - master
-    # Temporary: lets the oidc-check job below run from THIS filename, which is
-    # what the npm trusted publisher is keyed to. Remove once publishing works.
-    workflow_dispatch:
 
 permissions:
     contents: write
@@ -14,7 +11,6 @@ permissions:
 name: release
 jobs:
     release-please:
-        if: github.event_name == 'push'
         runs-on: ubuntu-latest
         steps:
             - uses: googleapis/release-please-action@v5
@@ -26,9 +22,9 @@ jobs:
               # these if statements ensure that a publication only occurs when
               # a new release is created:
               if: ${{ steps.release.outputs.release_created }}
-            # No registry-url here on purpose. It makes setup-node write an
-            # .npmrc with //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-            # and inject a placeholder NODE_AUTH_TOKEN. npm defaults to
+            # No registry-url on purpose. It makes setup-node write an .npmrc
+            # with //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} and
+            # inject a placeholder NODE_AUTH_TOKEN. npm defaults to
             # registry.npmjs.org anyway, and trusted publishing authenticates
             # through the workflow OIDC token instead.
             - uses: actions/setup-node@v6
@@ -39,32 +35,3 @@ jobs:
               if: ${{ steps.release.outputs.release_created }}
             - run: npm publish --provenance --access public
               if: ${{ steps.release.outputs.release_created }}
-
-    # Temporary diagnostic, mirrors the publish config above. Attempts to
-    # publish 1.0.5, which already exists on the registry, so it can never
-    # actually publish: E403 means OIDC authenticated us, E404 means it did not.
-    oidc-check:
-        if: github.event_name == 'workflow_dispatch'
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v6
-            - uses: actions/setup-node@v6
-              with:
-                  node-version: 24
-            - run: npm ci
-            - name: Show the OIDC claims npm matches against
-              run: |
-                  tok=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-                    "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=npm:registry.npmjs.org" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).value')
-                  node -e '
-                    const p = JSON.parse(Buffer.from(process.argv[1].split(".")[1], "base64url").toString());
-                    for (const k of ["iss","aud","repository","repository_owner","workflow_ref","job_workflow_ref","ref","environment","event_name"]) {
-                        console.log(k.padEnd(18), JSON.stringify(p[k]));
-                    }
-                  ' "$tok"
-            - name: Attempt publish of an already published version
-              run: |
-                  echo "npm $(npm --version), NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN:-(unset)}"
-                  npm pkg set version=1.0.5
-                  npm publish --access public --loglevel verbose > out.log 2>&1 || true
-                  grep -iE 'oidc|npm error code|npm error 40|need auth|cannot publish over' out.log | head -20
