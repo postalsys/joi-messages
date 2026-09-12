@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/postalsys/joi-messages/compare/v1.1.2...v1.1.3) (2026-09-12)
+
+
+### Miscellaneous Chores
+
+* release 1.1.3 ([b3252fd](https://github.com/postalsys/joi-messages/commit/b3252fd168ac33929c788b7a51c1f3f2ceafa952))
+
 ## [1.1.2](https://github.com/postalsys/joi-messages/compare/v1.1.1...v1.1.2) (2026-09-12)
 
 
