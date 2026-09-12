@@ -7,8 +7,32 @@ permissions:
     contents: read
     id-token: write
 
+# Both jobs attempt to publish version 1.0.5, which already exists on the
+# registry. That can never actually publish anything: if OIDC auth succeeds
+# npm rejects it with E403 "cannot publish over previously published version",
+# and if auth fails it reports E404. So the error code tells us whether
+# trusted publishing authenticated, without consuming a new version.
 jobs:
-    debug:
+    without-registry-url:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 24
+            - run: npm install -g npm@latest
+            - run: npm ci
+            - name: Show npmrc state
+              run: |
+                  echo "NPM_CONFIG_USERCONFIG=${NPM_CONFIG_USERCONFIG:-(unset)}"
+                  cat "${NPM_CONFIG_USERCONFIG:-/dev/null}" 2>/dev/null || echo "(no userconfig file)"
+                  echo "registry: $(npm config get registry)"
+            - name: Attempt publish of existing version
+              run: |
+                  npm pkg set version=1.0.5
+                  npm publish --access public 2>&1 | tail -20 || true
+
+    registry-url-with-authtoken-stripped:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
@@ -17,19 +41,13 @@ jobs:
                   node-version: 24
                   registry-url: 'https://registry.npmjs.org'
             - run: npm install -g npm@latest
-            - name: Inspect OIDC environment
+            - run: npm ci
+            - name: Strip the _authToken line setup-node wrote
               run: |
-                  echo "npm version: $(npm --version)"
-                  echo "node version: $(node --version)"
-                  echo "NPM_CONFIG_USERCONFIG=$NPM_CONFIG_USERCONFIG"
-                  echo "--- userconfig .npmrc contents:"
-                  cat "$NPM_CONFIG_USERCONFIG" || echo "(no file)"
-                  echo "--- OIDC env vars present?"
-                  echo "ACTIONS_ID_TOKEN_REQUEST_URL set: ${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}${ACTIONS_ID_TOKEN_REQUEST_URL:-no}"
-                  echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN set: ${ACTIONS_ID_TOKEN_REQUEST_TOKEN:+yes}${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-no}"
-                  echo "--- resolved authToken config:"
-                  npm config get //registry.npmjs.org/:_authToken
-                  echo "--- registry:"
-                  npm config get registry
-            - name: Publish dry run with verbose logging
-              run: npm publish --access public --dry-run --loglevel verbose 2>&1 | grep -iE 'oidc|trusted|auth|provenance|registry' | head -40
+                  echo "before:"; cat "$NPM_CONFIG_USERCONFIG"
+                  sed -i '/_authToken/d' "$NPM_CONFIG_USERCONFIG"
+                  echo "after:"; cat "$NPM_CONFIG_USERCONFIG"
+            - name: Attempt publish of existing version
+              run: |
+                  npm pkg set version=1.0.5
+                  npm publish --access public 2>&1 | tail -20 || true
