@@ -17,18 +17,22 @@ msgstr ""
 #: any.custom
 msgid "{{#label}} failed custom validation because {{#error.message}}"
 msgstr ""
-"{{#label}} nie powiodła się walidacja niestandardowa, ponieważ {{#error."
-"message}}"
+"Niestandardowa walidacja {{#label}} nie powiodła się, ponieważ "
+"{{#error.message}}"
 
 # Label: any.default
 #: any.default
 msgid "{{#label}} threw an error when running default method"
-msgstr "{{#label}} rzucił błąd podczas uruchamiania domyślnej metody"
+msgstr ""
+"Wystąpił błąd podczas wykonywania metody wyznaczającej wartość domyślną "
+"dla {{#label}}"
 
 # Label: any.failover
 #: any.failover
 msgid "{{#label}} threw an error when running failover method"
-msgstr "{{#label}} rzucił błąd podczas uruchamiania metody awaryjnej"
+msgstr ""
+"Wystąpił błąd podczas wykonywania metody wyznaczającej wartość zastępczą "
+"dla {{#label}}"
 
 # Label: any.invalid
 #: any.invalid
@@ -40,12 +44,13 @@ msgstr "{{#label}} zawiera nieprawidłową wartość"
 msgid ""
 "{{#label}} must be {if(#valids.length == 1, \"\", \"one of \")}{{#valids}}"
 msgstr ""
-"{{#label}} musi być {if(#valids.length == 1, \"\", \"jednym z \")}{{#valids}}"
+"{{#label}} musi mieć {if(#valids.length == 1, \"wartość \", \"jedną z "
+"wartości \")}{{#valids}}"
 
 # Label: any.ref
 #: any.ref
 msgid "{{#label}} {{#arg}} references {{:#ref}} which {{#reason}}"
-msgstr "{{#label}} {{#arg}} odnosi się do {{:#ref}}, który {{#reason}}"
+msgstr "{{#label}}: argument {{#arg}} odwołuje się do {{:#ref}}; {{#reason}}"
 
 # Label: any.required
 #: any.required
@@ -75,7 +80,7 @@ msgstr "{{#label}} pasuje do więcej niż jednego dozwolonego typu"
 # Label: alternatives.types
 #: alternatives.types
 msgid "{{#label}} must be one of {{#types}}"
-msgstr "{{#label}} musi być jednym z {{#types}}"
+msgstr "{{#label}} musi być jednego z następujących typów: {{#types}}"
 
 # Label: array.base
 #: array.base
@@ -90,16 +95,16 @@ msgstr "{{#label}} zawiera wykluczoną wartość"
 # Label: array.hasKnown
 #: array.hasKnown
 msgid ""
-"{{#label}} does not contain at least one required match for type {:"
-"#patternLabel}"
+"{{#label}} does not contain at least one required match for type "
+"{:#patternLabel}"
 msgstr ""
-"{{#label}} nie zawiera co najmniej jednego wymaganego dopasowania dla typu "
-"{{:#patternLabel}}"
+"{{#label}} nie zawiera żadnego wymaganego dopasowania do typu "
+"{:#patternLabel}"
 
 # Label: array.hasUnknown
 #: array.hasUnknown
 msgid "{{#label}} does not contain at least one required match"
-msgstr "{{#label}} nie zawiera co najmniej jednego wymaganego dopasowania"
+msgstr "{{#label}} nie zawiera żadnego wymaganego dopasowania"
 
 # Label: array.includesRequiredBoth
 #: array.includesRequiredBoth
@@ -107,8 +112,9 @@ msgid ""
 "{{#label}} does not contain {{#knownMisses}} and {{#unknownMisses}} other "
 "required value(s)"
 msgstr ""
-"{{#label}} nie zawiera {{#knownMisses}} i {{#unknownMisses}} innych "
-"wymaganych wartości"
+"W {{#label}} brakuje {{#knownMisses}} oraz {{#unknownMisses}} "
+"{if(#unknownMisses == 1, \"innej wymaganej wartości\", \"innych wymaganych "
+"wartości\")}"
 
 # Label: array.includesRequiredKnowns
 #: array.includesRequiredKnowns
@@ -118,32 +124,49 @@ msgstr "{{#label}} nie zawiera {{#knownMisses}}"
 # Label: array.includesRequiredUnknowns
 #: array.includesRequiredUnknowns
 msgid "{{#label}} does not contain {{#unknownMisses}} required value(s)"
-msgstr "{{#label}} nie zawiera {{#unknownMisses}} wymaganych wartości"
+msgstr ""
+"W {{#label}} brakuje {{#unknownMisses}} {if(#unknownMisses == 1, "
+"\"wymaganej wartości\", \"wymaganych wartości\")}"
 
 # Label: array.length
 #: array.length
 msgid "{{#label}} must contain {{#limit}} items"
-msgstr "{{#label}} musi zawierać elementy {{#limit}}"
+msgstr ""
+"{{#label}} musi zawierać {{#limit}} element{if(#limit == 1, \"\", "
+"if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || #limit % "
+"100 > 14), \"y\", \"ów\"))}"
 
 # Label: array.max
 #: array.max
 msgid "{{#label}} must contain less than or equal to {{#limit}} items"
-msgstr "{{#label}} musi zawierać {{#limit}} lub mniej elementów"
+msgstr ""
+"{{#label}} może zawierać co najwyżej {{#limit}} element{if(#limit == 1, "
+"\"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"y\", \"ów\"))}"
 
 # Label: array.min
 #: array.min
 msgid "{{#label}} must contain at least {{#limit}} items"
-msgstr "{{#label}} musi zawierać co najmniej {{#limit}} elementów"
+msgstr ""
+"{{#label}} musi zawierać co najmniej {{#limit}} element{if(#limit == 1, "
+"\"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"y\", \"ów\"))}"
 
 # Label: array.orderedLength
 #: array.orderedLength
 msgid "{{#label}} must contain at most {{#limit}} items"
-msgstr "{{#label}} musi zawierać co najwyżej {{#limit}} elementów"
+msgstr ""
+"{{#label}} może zawierać co najwyżej {{#limit}} element{if(#limit == 1, "
+"\"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"y\", \"ów\"))}"
 
 # Label: array.sort
 #: array.sort
 msgid "{{#label}} must be sorted in {#order} order by {{#by}}"
-msgstr "{{#label}} musi być posortowane w kolejności {{#order}} według {{#by}}"
+msgstr ""
+"{{#label}} musi być posortowane według {{#by}} w kolejności {if(#order == "
+"\"ascending\", \"rosnącej\", if(#order == \"descending\", \"malejącej\", "
+"#order))}"
 
 # Label: array.sort.mismatching
 #: array.sort.mismatching
@@ -155,12 +178,12 @@ msgstr "{{#label}} nie może zostać posortowane z powodu niezgodności typów"
 msgid "{{#label}} cannot be sorted due to unsupported type {#type}"
 msgstr ""
 "{{#label}} nie może zostać posortowane z powodu nieobsługiwanego typu "
-"{{#type}}"
+"{#type}"
 
 # Label: array.sparse
 #: array.sparse
 msgid "{{#label}} must not be a sparse array item"
-msgstr "{{#label}} nie może być elementem tablicy rzadkiej tablicy"
+msgstr "{{#label}} nie może być elementem tablicy o wartości undefined"
 
 # Label: array.unique
 #: array.unique
@@ -187,27 +210,27 @@ msgstr ""
 # Label: date.greater
 #: date.greater
 msgid "{{#label}} must be greater than {{:#limit}}"
-msgstr "{{#label}} musi być większa niż {{:#limit}}"
+msgstr "{{#label}} musi być datą późniejszą niż {{:#limit}}"
 
 # Label: date.less
 #: date.less
 msgid "{{#label}} must be less than {{:#limit}}"
-msgstr "{{#label}} musi być mniejsza niż {{:#limit}}"
+msgstr "{{#label}} musi być datą wcześniejszą niż {{:#limit}}"
 
 # Label: date.max
 #: date.max
 msgid "{{#label}} must be less than or equal to {{:#limit}}"
-msgstr "{{#label}} musi być mniejsza lub równa {{:#limit}}"
+msgstr "{{#label}} nie może być datą późniejszą niż {{:#limit}}"
 
 # Label: date.min
 #: date.min
 msgid "{{#label}} must be greater than or equal to {{:#limit}}"
-msgstr "{{#label}} musi być większa lub równa {{:#limit}}"
+msgstr "{{#label}} nie może być datą wcześniejszą niż {{:#limit}}"
 
 # Label: date.format.iso
 #: date.format.iso
 msgid "ISO 8601 date"
-msgstr "Data ISO 8601"
+msgstr "data ISO 8601"
 
 # Label: date.format.javascript
 #: date.format.javascript
@@ -225,8 +248,8 @@ msgid ""
 "{{#label}} contains {{#presentWithLabels}} without its required peers "
 "{{#missingWithLabels}}"
 msgstr ""
-"{{#label}} zawiera {{#presentWithLabels}} bez swoich wymaganych "
-"odpowiedników {{#missingWithLabels}}"
+"{{#label}} zawiera {{#presentWithLabels}}, ale brakuje wymaganych wraz z "
+"nimi kluczy {{#missingWithLabels}}"
 
 # Label: object.assert
 #: object.assert
@@ -235,9 +258,10 @@ msgid ""
 "failed to ` + (#message || \"pass the assertion test\"), #message || \"the "
 "assertion failed\")}"
 msgstr ""
-"{{#label}} jest nieprawidłowe, ponieważ {if(#subject.key, `\"` + #subject."
-"key + `\" nie powiódł się ` + (#message || \"test asercji\"), #message || "
-"\"asercja nie powiodła się\")}"
+"{{#label}} jest nieprawidłowe, ponieważ {if(#subject.key, `sprawdzenie \"` "
+"+ #subject.key + `\" nie powiodło się: ` + (#message || \"warunek asercji "
+"nie został spełniony\"), #message || \"warunek asercji nie został "
+"spełniony\")}"
 
 # Label: object.base
 #: object.base
@@ -252,7 +276,10 @@ msgstr "{{#label}} musi być instancją {{:#type}}"
 # Label: object.length
 #: object.length
 msgid "{{#label}} must have {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
-msgstr "{{#label}} musi mieć {{#limit}} klucz{if(#limit == 1, \"\", \"y\")}"
+msgstr ""
+"{{#label}} musi zawierać {{#limit}} klucz{if(#limit == 1, \"\", if(#limit "
+"% 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || #limit % 100 > 14), "
+"\"e\", \"y\"))}"
 
 # Label: object.max
 #: object.max
@@ -260,28 +287,33 @@ msgid ""
 "{{#label}} must have less than or equal to {{#limit}} key{if(#limit == 1, "
 "\"\", \"s\")}"
 msgstr ""
-"{{#label}} musi mieć {{#limit}} {if(#limit == 1, \"klucz\", \"lub mniej "
-"kluczy\")}"
+"{{#label}} może zawierać co najwyżej {{#limit}} klucz{if(#limit == 1, "
+"\"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"e\", \"y\"))}"
 
 # Label: object.min
 #: object.min
 msgid ""
 "{{#label}} must have at least {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
 msgstr ""
-"{{#label}} musi mieć co najmniej {{#limit}} klucz{if(#limit == 1, \"\", "
-"\"y\")}"
+"{{#label}} musi zawierać co najmniej {{#limit}} klucz{if(#limit == 1, "
+"\"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"e\", \"y\"))}"
 
 # Label: object.missing
 #: object.missing
 msgid "{{#label}} must contain at least one of {{#peersWithLabels}}"
-msgstr "{{#label}} musi zawierać co najmniej jedną z {{#peersWithLabels}}"
+msgstr ""
+"{{#label}} musi zawierać co najmniej jeden z następujących kluczy: "
+"{{#peersWithLabels}}"
 
 # Label: object.nand
 #: object.nand
 msgid ""
 "{{:#mainWithLabel}} must not exist simultaneously with {{#peersWithLabels}}"
 msgstr ""
-"{{:#mainWithLabel}} nie może istnieć jednocześnie z {{#peersWithLabels}}"
+"{{:#mainWithLabel}} nie może występować jednocześnie ze wszystkimi "
+"następującymi kluczami: {{#peersWithLabels}}"
 
 # Label: object.oxor
 #: object.oxor
@@ -290,7 +322,7 @@ msgid ""
 "{{#peersWithLabels}}"
 msgstr ""
 "{{#label}} zawiera konflikt między opcjonalnymi, wzajemnie wykluczającymi "
-"się elementami równorzędnymi {{#peersWithLabels}}"
+"się kluczami {{#peersWithLabels}}"
 
 # Label: object.pattern.match
 #: object.pattern.match
@@ -313,8 +345,8 @@ msgid ""
 "{{#label}} cannot rename {{:#from}} because multiple renames are disabled "
 "and another key was already renamed to {{:#to}}"
 msgstr ""
-"{{#label}} nie może zmienić nazwy {{:#from}}, ponieważ wielokrotne zmiany "
-"nazw są wyłączone, a inny klucz został już zmieniony na {{:#to}}"
+"{{#label}} nie może zmienić nazwy klucza {{:#from}}, ponieważ wielokrotne "
+"zmiany nazw są wyłączone, a inny klucz otrzymał już nazwę {{:#to}}"
 
 # Label: object.rename.override
 #: object.rename.override
@@ -322,8 +354,16 @@ msgid ""
 "{{#label}} cannot rename {{:#from}} because override is disabled and target "
 "{{:#to}} exists"
 msgstr ""
-"{{#label}} nie może zmienić nazwy {{:#from}}, ponieważ nadpisywanie jest "
-"wyłączone, a cel {{:#to}} istnieje"
+"{{#label}} nie może zmienić nazwy klucza {{:#from}}, ponieważ nadpisywanie "
+"jest wyłączone, a klucz docelowy {{:#to}} już istnieje"
+
+# Label: object.rename.proto
+#: object.rename.proto
+msgid ""
+"{{#label}} cannot rename {{:#from}} because target {{:#to}} is a reserved key"
+msgstr ""
+"{{#label}} nie może zmienić nazwy klucza {{:#from}}, ponieważ klucz "
+"docelowy {{:#to}} jest zastrzeżony"
 
 # Label: object.schema
 #: object.schema
@@ -333,29 +373,27 @@ msgstr "{{#label}} musi być schematem Joi typu {{#type}}"
 # Label: object.with
 #: object.with
 msgid "{{:#mainWithLabel}} missing required peer {{:#peerWithLabel}}"
-msgstr ""
-"{{:#mainWithLabel}} brak wymaganego elementu równorzędnego {{:"
-"#peerWithLabel}}"
+msgstr "Klucz {{:#mainWithLabel}} wymaga obecności klucza {{:#peerWithLabel}}"
 
 # Label: object.without
 #: object.without
 msgid "{{:#mainWithLabel}} conflict with forbidden peer {{:#peerWithLabel}}"
 msgstr ""
-"{{:#mainWithLabel}} konflikt z zabronionym elementem równorzędnym {{:"
-"#peerWithLabel}}"
+"Klucz {{:#mainWithLabel}} nie może występować razem z kluczem "
+"{{:#peerWithLabel}}"
 
 # Label: object.xor
 #: object.xor
 msgid ""
 "{{#label}} contains a conflict between exclusive peers {{#peersWithLabels}}"
 msgstr ""
-"{{#label}} zawiera konflikt między wykluczającymi się elementami "
-"równorzędnymi {{#peersWithLabels}}"
+"{{#label}} zawiera konflikt między wzajemnie wykluczającymi się kluczami "
+"{{#peersWithLabels}}"
 
 # Label: function.arity
 #: function.arity
 msgid "{{#label}} must have an arity of {{#n}}"
-msgstr "{{#label}} musi mieć argumentowość równą {{#n}}"
+msgstr "Liczba parametrów {{#label}} musi wynosić {{#n}}"
 
 # Label: function.class
 #: function.class
@@ -365,12 +403,24 @@ msgstr "{{#label}} musi być klasą"
 # Label: function.maxArity
 #: function.maxArity
 msgid "{{#label}} must have an arity lesser or equal to {{#n}}"
-msgstr "{{#label}} musi mieć argumentowość mniejszą lub równą {{#n}}"
+msgstr "Liczba parametrów {{#label}} może wynosić co najwyżej {{#n}}"
 
 # Label: function.minArity
 #: function.minArity
 msgid "{{#label}} must have an arity greater or equal to {{#n}}"
-msgstr "{{#label}} musi mieć argumentowość większą lub równą {{#n}}"
+msgstr "Liczba parametrów {{#label}} musi wynosić co najmniej {{#n}}"
+
+# Label: link.depth
+#: link.depth
+msgid "{{#label}} exceeds maximum recursion depth supported by the runtime"
+msgstr ""
+"{{#label}} przekracza maksymalną głębokość rekurencji obsługiwaną przez "
+"środowisko wykonawcze"
+
+# Label: link.maxRecursion
+#: link.maxRecursion
+msgid "{{#label}} exceeds maximum recursion depth of {{#limit}}"
+msgstr "{{#label}} przekracza maksymalną głębokość rekurencji wynoszącą {{#limit}}"
 
 # Label: number.base
 #: number.base
@@ -420,7 +470,7 @@ msgstr "{{#label}} musi być liczbą ujemną"
 # Label: number.port
 #: number.port
 msgid "{{#label}} must be a valid port"
-msgstr "{{#label}} musi być prawidłowym portem"
+msgstr "{{#label}} musi być prawidłowym numerem portu"
 
 # Label: number.positive
 #: number.positive
@@ -430,12 +480,14 @@ msgstr "{{#label}} musi być liczbą dodatnią"
 # Label: number.precision
 #: number.precision
 msgid "{{#label}} must have no more than {{#limit}} decimal places"
-msgstr "{{#label}} nie może mieć więcej niż {{#limit}} miejsc po przecinku"
+msgstr "Liczba miejsc po przecinku w {{#label}} nie może przekraczać {{#limit}}"
 
 # Label: number.unsafe
 #: number.unsafe
 msgid "{{#label}} must be a safe number"
-msgstr "{{#label}} musi być bezpieczną liczbą"
+msgstr ""
+"{{#label}} musi być liczbą, którą można bezpiecznie reprezentować w "
+"JavaScript"
 
 # Label: string.alphanum
 #: string.alphanum
@@ -450,17 +502,17 @@ msgstr "{{#label}} musi być ciągiem znaków"
 # Label: string.base64
 #: string.base64
 msgid "{{#label}} must be a valid base64 string"
-msgstr "{{#label}} musi być poprawnym ciągiem base64"
+msgstr "{{#label}} musi być prawidłowym ciągiem Base64"
 
 # Label: string.creditCard
 #: string.creditCard
 msgid "{{#label}} must be a credit card"
-msgstr "{{#label}} musi być kartą kredytową"
+msgstr "{{#label}} musi być prawidłowym numerem karty kredytowej"
 
 # Label: string.dataUri
 #: string.dataUri
 msgid "{{#label}} must be a valid dataUri string"
-msgstr "{{#label}} musi być prawidłowym ciągiem dataUri"
+msgstr "{{#label}} musi być prawidłowym identyfikatorem URI danych"
 
 # Label: string.domain
 #: string.domain
@@ -475,7 +527,7 @@ msgstr "{{#label}} musi być prawidłowym adresem e-mail"
 # Label: string.empty
 #: string.empty
 msgid "{{#label}} is not allowed to be empty"
-msgstr "{{#label}} nie może być pusta"
+msgstr "{{#label}} nie może być puste"
 
 # Label: string.guid
 #: string.guid
@@ -491,7 +543,8 @@ msgstr "{{#label}} może zawierać tylko znaki szesnastkowe"
 #: string.hexAlign
 msgid "{{#label}} hex decoded representation must be byte aligned"
 msgstr ""
-"{{#label}} reprezentacja dekodowana szesnastkowo musi być wyrównana do bajtów"
+"{{#label}} musi zawierać parzystą liczbę znaków szesnastkowych, aby "
+"zdekodowana wartość składała się z pełnych bajtów"
 
 # Label: string.hostname
 #: string.hostname
@@ -501,7 +554,10 @@ msgstr "{{#label}} musi być poprawną nazwą hosta"
 # Label: string.ip
 #: string.ip
 msgid "{{#label}} must be a valid ip address with a {{#cidr}} CIDR"
-msgstr "{{#label}} musi być prawidłowym adresem ip z {{#cidr}} CIDR"
+msgstr ""
+"{{#label}} musi być prawidłowym adresem IP (CIDR: {{if(#cidr == "
+"\"required\", \"wymagany\", if(#cidr == \"optional\", \"opcjonalny\", "
+"if(#cidr == \"forbidden\", \"zabroniony\", #cidr)))}})"
 
 # Label: string.ipVersion
 #: string.ipVersion
@@ -509,23 +565,25 @@ msgid ""
 "{{#label}} must be a valid ip address of one of the following versions "
 "{{#version}} with a {{#cidr}} CIDR"
 msgstr ""
-"{{#label}} musi być prawidłowym adresem ip jednej z następujących wersji "
-"{{#version}} z {{#cidr}} CIDR"
+"{{#label}} musi być prawidłowym adresem IP jednej z następujących wersji: "
+"{{#version}} (CIDR: {{if(#cidr == \"required\", \"wymagany\", if(#cidr == "
+"\"optional\", \"opcjonalny\", if(#cidr == \"forbidden\", \"zabroniony\", "
+"#cidr)))}})"
 
 # Label: string.isoDate
 #: string.isoDate
 msgid "{{#label}} must be in iso format"
-msgstr "{{#label}} musi być w formacie iso"
+msgstr "{{#label}} musi być w formacie ISO 8601"
 
 # Label: string.isoDuration
 #: string.isoDuration
 msgid "{{#label}} must be a valid ISO 8601 duration"
-msgstr "{{#label}} musi być prawidłowym czasem trwania ISO 8601"
+msgstr "{{#label}} musi być prawidłowym czasem trwania w formacie ISO 8601"
 
 # Label: string.length
 #: string.length
 msgid "{{#label}} length must be {{#limit}} characters long"
-msgstr "{{#label}} musi mieć długość {{#limit}} znaków"
+msgstr "Liczba znaków w {{#label}} musi wynosić {{#limit}}"
 
 # Label: string.lowercase
 #: string.lowercase
@@ -536,18 +594,19 @@ msgstr "{{#label}} może zawierać tylko małe litery"
 #: string.max
 msgid ""
 "{{#label}} length must be less than or equal to {{#limit}} characters long"
-msgstr "Długość {{#label}} musi być mniejsza lub równa {{#limit}} znaków"
+msgstr "Liczba znaków w {{#label}} może wynosić co najwyżej {{#limit}}"
 
 # Label: string.min
 #: string.min
 msgid "{{#label}} length must be at least {{#limit}} characters long"
-msgstr "Długość {{#label}} musi wynosić co najmniej {{#limit}} znaków"
+msgstr "Liczba znaków w {{#label}} musi wynosić co najmniej {{#limit}}"
 
 # Label: string.normalize
 #: string.normalize
 msgid "{{#label}} must be unicode normalized in the {{#form}} form"
 msgstr ""
-"{{#label}} musi być w postaci unicode znormalizowany do postaci {{#form}}"
+"{{#label}} musi być znormalizowane zgodnie z formą normalizacji Unicode "
+"{{#form}}"
 
 # Label: string.token
 #: string.token
@@ -569,12 +628,12 @@ msgstr "{{#label}} z wartością {:[.]} nie pasuje do wzorca {{#name}}"
 # Label: string.pattern.invert.base
 #: string.pattern.invert.base
 msgid "{{#label}} with value {:[.]} matches the inverted pattern: {{#regex}}"
-msgstr "{{#label}} z wartością {:[.]} pasuje do odwróconego wzorca: {{#regex}}"
+msgstr "{{#label}} z wartością {:[.]} pasuje do zabronionego wzorca: {{#regex}}"
 
 # Label: string.pattern.invert.name
 #: string.pattern.invert.name
 msgid "{{#label}} with value {:[.]} matches the inverted {{#name}} pattern"
-msgstr "{{#label}} z wartością {:[.]} pasuje do odwróconego wzorca {{#name}}"
+msgstr "{{#label}} z wartością {:[.]} pasuje do zabronionego wzorca {{#name}}"
 
 # Label: string.trim
 #: string.trim
@@ -584,20 +643,20 @@ msgstr "{{#label}} nie może zawierać początkowych ani końcowych białych zna
 # Label: string.uri
 #: string.uri
 msgid "{{#label}} must be a valid uri"
-msgstr "{{#label}} musi być poprawnym uri"
+msgstr "{{#label}} musi być prawidłowym identyfikatorem URI"
 
 # Label: string.uriCustomScheme
 #: string.uriCustomScheme
 msgid ""
 "{{#label}} must be a valid uri with a scheme matching the {{#scheme}} pattern"
 msgstr ""
-"{{#label}} musi być poprawnym uri ze schematem pasującym do wzorca "
-"{{#scheme}}"
+"{{#label}} musi być prawidłowym identyfikatorem URI ze schematem pasującym "
+"do wzorca {{#scheme}}"
 
 # Label: string.uriRelativeOnly
 #: string.uriRelativeOnly
 msgid "{{#label}} must be a valid relative uri"
-msgstr "{{#label}} musi być prawidłowym względnym uri"
+msgstr "{{#label}} musi być prawidłowym względnym identyfikatorem URI"
 
 # Label: string.uppercase
 #: string.uppercase
@@ -607,12 +666,12 @@ msgstr "{{#label}} może zawierać tylko wielkie litery"
 # Label: symbol.base
 #: symbol.base
 msgid "{{#label}} must be a symbol"
-msgstr "{{#label}} musi być symbolem"
+msgstr "{{#label}} musi być wartością typu Symbol"
 
 # Label: symbol.map
 #: symbol.map
 msgid "{{#label}} must be one of {{#map}}"
-msgstr "{{#label}} musi być jedną z {{#map}}"
+msgstr "{{#label}} musi być jedną z następujących wartości: {{#map}}"
 
 # Label: binary.base
 #: binary.base
@@ -622,14 +681,23 @@ msgstr "{{#label}} musi być buforem lub ciągiem znaków"
 # Label: binary.length
 #: binary.length
 msgid "{{#label}} must be {{#limit}} bytes"
-msgstr "{{#label}} musi być {{#limit}} bajtów"
+msgstr ""
+"Rozmiar {{#label}} musi wynosić {{#limit}} bajt{if(#limit == 1, \"\", "
+"if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || #limit % "
+"100 > 14), \"y\", \"ów\"))}"
 
 # Label: binary.max
 #: binary.max
 msgid "{{#label}} must be less than or equal to {{#limit}} bytes"
-msgstr "{{#label}} musi być mniejsza lub równa {{#limit}} bajtów"
+msgstr ""
+"Rozmiar {{#label}} może wynosić co najwyżej {{#limit}} bajt{if(#limit == "
+"1, \"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"y\", \"ów\"))}"
 
 # Label: binary.min
 #: binary.min
 msgid "{{#label}} must be at least {{#limit}} bytes"
-msgstr "{{#label}} musi mieć co najmniej {{#limit}} bajtów"
+msgstr ""
+"Rozmiar {{#label}} musi wynosić co najmniej {{#limit}} bajt{if(#limit == "
+"1, \"\", if(#limit % 10 >= 2 && #limit % 10 <= 4 && (#limit % 100 < 12 || "
+"#limit % 100 > 14), \"y\", \"ów\"))}"

@@ -15,18 +15,17 @@ msgstr ""
 # Label: any.custom
 #: any.custom
 msgid "{{#label}} failed custom validation because {{#error.message}}"
-msgstr ""
-"{{#label}} ebaõnnestus kohandatud valideerimine, sest {{#error.message}}"
+msgstr "{{#label}} kohandatud valideerimine ebaõnnestus, sest {{#error.message}}"
 
 # Label: any.default
 #: any.default
 msgid "{{#label}} threw an error when running default method"
-msgstr "{{#label}} tekitas vea, kui käivitas vaikimisi meetodi"
+msgstr "{{#label}} vaikeväärtuse määramise meetodi käivitamisel tekkis viga"
 
 # Label: any.failover
 #: any.failover
 msgid "{{#label}} threw an error when running failover method"
-msgstr "{{#label}} tekitas vea failover meetodi käivitamisel"
+msgstr "{{#label}} asendusväärtuse määramise meetodi käivitamisel tekkis viga"
 
 # Label: any.invalid
 #: any.invalid
@@ -44,7 +43,7 @@ msgstr ""
 # Label: any.ref
 #: any.ref
 msgid "{{#label}} {{#arg}} references {{:#ref}} which {{#reason}}"
-msgstr "{{#label}} {{#arg}} viitab {{:#ref}}, mis {{#reason}}"
+msgstr "{{#label}} argument {{#arg}} viitab väärtusele {{:#ref}}, mis {{#reason}}"
 
 # Label: any.required
 #: any.required
@@ -74,12 +73,12 @@ msgstr "{{#label}} vastab rohkem kui ühele lubatud tüübile"
 # Label: alternatives.types
 #: alternatives.types
 msgid "{{#label}} must be one of {{#types}}"
-msgstr "{{#label}} peab olema üks järgmistest {{#types}}"
+msgstr "{{#label}} peab olema üht järgmistest tüüpidest: {{#types}}"
 
 # Label: array.base
 #: array.base
 msgid "{{#label}} must be an array"
-msgstr "{{#label}} peab olema massiivi"
+msgstr "{{#label}} peab olema massiiv"
 
 # Label: array.excludes
 #: array.excludes
@@ -89,15 +88,14 @@ msgstr "{{#label}} sisaldab välistatud väärtust"
 # Label: array.hasKnown
 #: array.hasKnown
 msgid ""
-"{{#label}} does not contain at least one required match for type {:"
-"#patternLabel}"
-msgstr ""
-"{{#label}} ei sisalda vähemalt ühte nõutavat vastet tüübile {:#patternLabel}"
+"{{#label}} does not contain at least one required match for type "
+"{:#patternLabel}"
+msgstr "{{#label}} ei sisalda ühtegi nõutavat vastet tüübile {:#patternLabel}"
 
 # Label: array.hasUnknown
 #: array.hasUnknown
 msgid "{{#label}} does not contain at least one required match"
-msgstr "{{#label}} ei sisalda vähemalt ühte nõutavat vastet"
+msgstr "{{#label}} ei sisalda ühtegi nõutavat vastet"
 
 # Label: array.includesRequiredBoth
 #: array.includesRequiredBoth
@@ -105,8 +103,8 @@ msgid ""
 "{{#label}} does not contain {{#knownMisses}} and {{#unknownMisses}} other "
 "required value(s)"
 msgstr ""
-"{{#label}} ei sisalda {{#knownMisses}} ja {{#unknownMisses}} muid nõutavaid "
-"väärtusi"
+"{{#label}} ei sisalda väärtusi {{#knownMisses}} ega veel "
+"{{#unknownMisses}} nõutavat väärtust"
 
 # Label: array.includesRequiredKnowns
 #: array.includesRequiredKnowns
@@ -116,57 +114,60 @@ msgstr "{{#label}} ei sisalda {{#knownMisses}}"
 # Label: array.includesRequiredUnknowns
 #: array.includesRequiredUnknowns
 msgid "{{#label}} does not contain {{#unknownMisses}} required value(s)"
-msgstr "{{#label}} ei sisalda {{#unknownMisses}} nõutud väärtust (väärtusi)"
+msgstr "{{#label}} ei sisalda {{#unknownMisses}} nõutavat väärtust"
 
 # Label: array.length
 #: array.length
 msgid "{{#label}} must contain {{#limit}} items"
-msgstr "{{#label}} peab sisaldama {{#limit}} elemente"
+msgstr "{{#label}} peab sisaldama {{#limit}} elementi"
 
 # Label: array.max
 #: array.max
 msgid "{{#label}} must contain less than or equal to {{#limit}} items"
-msgstr "{{#label}} peab sisaldama vähem või võrdselt {{#limit}} elemente"
+msgstr "{{#label}} võib sisaldada kuni {{#limit}} elementi"
 
 # Label: array.min
 #: array.min
 msgid "{{#label}} must contain at least {{#limit}} items"
-msgstr "{{#label}} peab sisaldama vähemalt {{#limit}} elemente"
+msgstr "{{#label}} peab sisaldama vähemalt {{#limit}} elementi"
 
 # Label: array.orderedLength
 #: array.orderedLength
 msgid "{{#label}} must contain at most {{#limit}} items"
-msgstr "{{#label}} peab sisaldama maksimaalselt {{#limit}} elemente"
+msgstr "{{#label}} võib sisaldada kuni {{#limit}} elementi"
 
 # Label: array.sort
 #: array.sort
 msgid "{{#label}} must be sorted in {#order} order by {{#by}}"
-msgstr "{{#label}} peab olema sorteeritud {#order} järjekorras {{#by}} järgi"
+msgstr ""
+"{{#label}} peab olema sorditud {if(#order == \"ascending\", \"kasvavas\", "
+"if(#order == \"descending\", \"kahanevas\", #order))} järjekorras {{#by}} "
+"järgi"
 
 # Label: array.sort.mismatching
 #: array.sort.mismatching
 msgid "{{#label}} cannot be sorted due to mismatching types"
-msgstr "{{#label}} ei saa sorteerida, kuna tüübid ei vasta üksteisele"
+msgstr "{{#label}} ei saa sortida ühildumatute tüüpide tõttu"
 
 # Label: array.sort.unsupported
 #: array.sort.unsupported
 msgid "{{#label}} cannot be sorted due to unsupported type {#type}"
-msgstr "{{#label}} ei saa sorteerida, kuna tüüp ei ole toetatud {#type}"
+msgstr "{{#label}} ei saa sortida, sest tüüp {#type} ei ole toetatud"
 
 # Label: array.sparse
 #: array.sparse
 msgid "{{#label}} must not be a sparse array item"
-msgstr "{{#label}} ei tohi olla hõreda massiivi element"
+msgstr "{{#label}} ei tohi olla määramata väärtusega (undefined) massiivielement"
 
 # Label: array.unique
 #: array.unique
 msgid "{{#label}} contains a duplicate value"
-msgstr "{{#label}} sisaldab dubleeritud väärtust"
+msgstr "{{#label}} sisaldab korduvat väärtust"
 
 # Label: boolean.base
 #: boolean.base
 msgid "{{#label}} must be a boolean"
-msgstr "{{#label}} peab olema boolean"
+msgstr "{{#label}} peab olema tõeväärtus"
 
 # Label: date.base
 #: date.base
@@ -178,27 +179,28 @@ msgstr "{{#label}} peab olema kehtiv kuupäev"
 msgid ""
 "{{#label}} must be in {msg(\"date.format.\" + #format) || #format} format"
 msgstr ""
-"{{#label}} peab olema {msg(\"date.format.\" + #format) || #format} formaadis"
+"{{#label}} peab olema vormingus {msg(\"date.format.\" + #format) || "
+"#format}"
 
 # Label: date.greater
 #: date.greater
 msgid "{{#label}} must be greater than {{:#limit}}"
-msgstr "{{#label}} peab olema suurem kui {{:#limit}}"
+msgstr "{{#label}} peab olema hilisem kui {{:#limit}}"
 
 # Label: date.less
 #: date.less
 msgid "{{#label}} must be less than {{:#limit}}"
-msgstr "{{#label}} peab olema väiksem kui {{:#limit}}"
+msgstr "{{#label}} peab olema varasem kui {{:#limit}}"
 
 # Label: date.max
 #: date.max
 msgid "{{#label}} must be less than or equal to {{:#limit}}"
-msgstr "{{#label}} peab olema väiksem või võrdne {{:#limit}}"
+msgstr "{{#label}} ei tohi olla hilisem kui {{:#limit}}"
 
 # Label: date.min
 #: date.min
 msgid "{{#label}} must be greater than or equal to {{:#limit}}"
-msgstr "{{#label}} peab olema suurem või võrdne {{:#limit}}"
+msgstr "{{#label}} ei tohi olla varasem kui {{:#limit}}"
 
 # Label: date.format.iso
 #: date.format.iso
@@ -208,12 +210,12 @@ msgstr "ISO 8601 kuupäev"
 # Label: date.format.javascript
 #: date.format.javascript
 msgid "timestamp or number of milliseconds"
-msgstr "ajatempel või millisekundid"
+msgstr "ajatempel või millisekundite arv"
 
 # Label: date.format.unix
 #: date.format.unix
 msgid "timestamp or number of seconds"
-msgstr "ajatempel või sekundid"
+msgstr "ajatempel või sekundite arv"
 
 # Label: object.and
 #: object.and
@@ -221,8 +223,8 @@ msgid ""
 "{{#label}} contains {{#presentWithLabels}} without its required peers "
 "{{#missingWithLabels}}"
 msgstr ""
-"{{#label}} sisaldab {{#presentWithLabels}} ilma selle nõutavate "
-"eakaaslasteta {{#missingWithLabels}}"
+"{{#label}} sisaldab võtmeid {{#presentWithLabels}}, kuid puuduvad nendega "
+"koos nõutavad võtmed {{#missingWithLabels}}"
 
 # Label: object.assert
 #: object.assert
@@ -232,8 +234,8 @@ msgid ""
 "assertion failed\")}"
 msgstr ""
 "{{#label}} on kehtetu, sest {if(#subject.key, `\"` + #subject.key + `\" ei "
-"õnnestunud ` + (#message || \"läbida väite test\"), #message || \"väide "
-"ebaõnnestus\")}"
+"läbinud kontrolli: ` + (#message || \"kontrolltingimus ei ole täidetud\"), "
+"#message || \"kontrolltingimus ei ole täidetud\")}"
 
 # Label: object.base
 #: object.base
@@ -248,35 +250,35 @@ msgstr "{{#label}} peab olema {{:#type}} eksemplar"
 # Label: object.length
 #: object.length
 msgid "{{#label}} must have {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
-msgstr "{{#label}} peab olema {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
+msgstr "{{#label}} peab sisaldama {{#limit}} võtit"
 
 # Label: object.max
 #: object.max
 msgid ""
 "{{#label}} must have less than or equal to {{#limit}} key{if(#limit == 1, "
 "\"\", \"s\")}"
-msgstr ""
-"{{#label}} peab sisaldama kuni {{#limit}} võti{if(#limit == 1, \"\", \"t\")}"
+msgstr "{{#label}} võib sisaldada kuni {{#limit}} võtit"
 
 # Label: object.min
 #: object.min
 msgid ""
 "{{#label}} must have at least {{#limit}} key{if(#limit == 1, \"\", \"s\")}"
-msgstr ""
-"{{#label}} peab sisaldama vähemalt {{#limit}} võti{if(#limit == 1, \"\", \"t"
-"\")}"
+msgstr "{{#label}} peab sisaldama vähemalt {{#limit}} võtit"
 
 # Label: object.missing
 #: object.missing
 msgid "{{#label}} must contain at least one of {{#peersWithLabels}}"
-msgstr "{{#label}} peab sisaldama vähemalt ühte {{#peersWithLabels}}"
+msgstr ""
+"{{#label}} peab sisaldama vähemalt ühte järgmistest võtmetest: "
+"{{#peersWithLabels}}"
 
 # Label: object.nand
 #: object.nand
 msgid ""
 "{{:#mainWithLabel}} must not exist simultaneously with {{#peersWithLabels}}"
 msgstr ""
-"{{:#mainWithLabel}} ei tohi eksisteerida samaaegselt {{#peersWithLabels}}-ga"
+"{{:#mainWithLabel}} ei tohi esineda koos kõigi järgmiste võtmetega: "
+"{{#peersWithLabels}}"
 
 # Label: object.oxor
 #: object.oxor
@@ -284,7 +286,7 @@ msgid ""
 "{{#label}} contains a conflict between optional exclusive peers "
 "{{#peersWithLabels}}"
 msgstr ""
-"{{#label}} sisaldab konflikti vabatahtlike eksklusiivsete eakaaslaste "
+"{{#label}} sisaldab vastuolu valikuliste üksteist välistavate võtmete "
 "{{#peersWithLabels}} vahel"
 
 # Label: object.pattern.match
@@ -300,7 +302,7 @@ msgstr "{{#label}} peab olema Joi viide"
 # Label: object.regex
 #: object.regex
 msgid "{{#label}} must be a RegExp object"
-msgstr "{{#label}} peab olema RegExp objekt"
+msgstr "{{#label}} peab olema RegExp-objekt"
 
 # Label: object.rename.multiple
 #: object.rename.multiple
@@ -308,8 +310,9 @@ msgid ""
 "{{#label}} cannot rename {{:#from}} because multiple renames are disabled "
 "and another key was already renamed to {{:#to}}"
 msgstr ""
-"{{#label}} ei saa ümber nimetada {{:#from}}, sest mitmekordne "
-"ümbernimetamine on keelatud ja teine võti on juba ümber nimetatud {{:#to}}"
+"{{#label}} ei saa võtit {{:#from}} ümber nimetada, sest mitme võtme "
+"ümbernimetamine samaks nimeks on keelatud ja teine võti on juba ümber "
+"nimetatud nimeks {{:#to}}"
 
 # Label: object.rename.override
 #: object.rename.override
@@ -317,8 +320,16 @@ msgid ""
 "{{#label}} cannot rename {{:#from}} because override is disabled and target "
 "{{:#to}} exists"
 msgstr ""
-"{{#label}} ei saa ümber nimetada {{:#from}}, sest ülevõtmine on keelatud ja "
-"sihtmärk {{:#to}} on olemas"
+"{{#label}} ei saa võtit {{:#from}} ümber nimetada, sest ülekirjutamine on "
+"keelatud ja sihtvõti {{:#to}} on juba olemas"
+
+# Label: object.rename.proto
+#: object.rename.proto
+msgid ""
+"{{#label}} cannot rename {{:#from}} because target {{:#to}} is a reserved key"
+msgstr ""
+"{{#label}} ei saa võtit {{:#from}} ümber nimetada, sest sihtvõti {{:#to}} "
+"on reserveeritud"
 
 # Label: object.schema
 #: object.schema
@@ -328,25 +339,25 @@ msgstr "{{#label}} peab olema {{#type}} tüüpi Joi skeem"
 # Label: object.with
 #: object.with
 msgid "{{:#mainWithLabel}} missing required peer {{:#peerWithLabel}}"
-msgstr "{{:#mainWithLabel}} puudub nõutav partner {{:#peerWithLabel}}"
+msgstr "{{:#mainWithLabel}} korral puudub nõutav kaasnev võti {{:#peerWithLabel}}"
 
 # Label: object.without
 #: object.without
 msgid "{{:#mainWithLabel}} conflict with forbidden peer {{:#peerWithLabel}}"
-msgstr "{{:#mainWithLabel}} konflikt keelatud partneriga {{:#peerWithLabel}}"
+msgstr "{{:#mainWithLabel}} ei tohi esineda koos võtmega {{:#peerWithLabel}}"
 
 # Label: object.xor
 #: object.xor
 msgid ""
 "{{#label}} contains a conflict between exclusive peers {{#peersWithLabels}}"
 msgstr ""
-"{{#label}} sisaldab konflikti eksklusiivsete eakaaslaste "
+"{{#label}} sisaldab vastuolu üksteist välistavate võtmete "
 "{{#peersWithLabels}} vahel"
 
 # Label: function.arity
 #: function.arity
 msgid "{{#label}} must have an arity of {{#n}}"
-msgstr "{{#label}} peab olema ariteediga {{#n}}"
+msgstr "{{#label}} parameetrite arv peab olema {{#n}}"
 
 # Label: function.class
 #: function.class
@@ -356,17 +367,27 @@ msgstr "{{#label}} peab olema klass"
 # Label: function.maxArity
 #: function.maxArity
 msgid "{{#label}} must have an arity lesser or equal to {{#n}}"
-msgstr "{{#label}} peab olema väiksema või võrdse ariteediga kui {{#n}}"
+msgstr "{{#label}} parameetrite arv võib olla kuni {{#n}}"
 
 # Label: function.minArity
 #: function.minArity
 msgid "{{#label}} must have an arity greater or equal to {{#n}}"
-msgstr "{{#label}} peab olema ariteediga {{#n}} või sellega võrdne"
+msgstr "{{#label}} parameetrite arv peab olema vähemalt {{#n}}"
+
+# Label: link.depth
+#: link.depth
+msgid "{{#label}} exceeds maximum recursion depth supported by the runtime"
+msgstr "{{#label}} ületab käituskeskkonna toetatud maksimaalse rekursioonisügavuse"
+
+# Label: link.maxRecursion
+#: link.maxRecursion
+msgid "{{#label}} exceeds maximum recursion depth of {{#limit}}"
+msgstr "{{#label}} ületab maksimaalse rekursioonisügavuse {{#limit}}"
 
 # Label: number.base
 #: number.base
 msgid "{{#label}} must be a number"
-msgstr "{{#label}} peab olema number"
+msgstr "{{#label}} peab olema arv"
 
 # Label: number.greater
 #: number.greater
@@ -391,12 +412,12 @@ msgstr "{{#label}} peab olema väiksem kui {{#limit}}"
 # Label: number.max
 #: number.max
 msgid "{{#label}} must be less than or equal to {{#limit}}"
-msgstr "{{#label}} peab olema väiksem või võrdne {{#limit}}"
+msgstr "{{#label}} peab olema väiksem kui {{#limit}} või sellega võrdne"
 
 # Label: number.min
 #: number.min
 msgid "{{#label}} must be greater than or equal to {{#limit}}"
-msgstr "{{#label}} peab olema suurem või võrdne {{#limit}}"
+msgstr "{{#label}} peab olema suurem kui {{#limit}} või sellega võrdne"
 
 # Label: number.multiple
 #: number.multiple
@@ -411,7 +432,7 @@ msgstr "{{#label}} peab olema negatiivne arv"
 # Label: number.port
 #: number.port
 msgid "{{#label}} must be a valid port"
-msgstr "{{#label}} peab olema kehtiv port"
+msgstr "{{#label}} peab olema kehtiv pordinumber"
 
 # Label: number.positive
 #: number.positive
@@ -421,37 +442,37 @@ msgstr "{{#label}} peab olema positiivne arv"
 # Label: number.precision
 #: number.precision
 msgid "{{#label}} must have no more than {{#limit}} decimal places"
-msgstr "{{#label}} ei tohi olla rohkem kui {{#limit}} kümnendikohta"
+msgstr "{{#label}} võib sisaldada kuni {{#limit}} kohta pärast koma"
 
 # Label: number.unsafe
 #: number.unsafe
 msgid "{{#label}} must be a safe number"
-msgstr "{{#label}} peab olema turvaline number"
+msgstr "{{#label}} peab olema JavaScriptis ohutult esitatav arv"
 
 # Label: string.alphanum
 #: string.alphanum
 msgid "{{#label}} must only contain alpha-numeric characters"
-msgstr "{{#label}} peab sisaldama ainult tähtnumbrilisi sümboleid"
+msgstr "{{#label}} võib sisaldada ainult tähti ja numbreid"
 
 # Label: string.base
 #: string.base
 msgid "{{#label}} must be a string"
-msgstr "{{#label}} peab olema string"
+msgstr "{{#label}} peab olema sõne"
 
 # Label: string.base64
 #: string.base64
 msgid "{{#label}} must be a valid base64 string"
-msgstr "{{#label}} peab olema kehtiv base64 string"
+msgstr "{{#label}} peab olema kehtiv Base64-sõne"
 
 # Label: string.creditCard
 #: string.creditCard
 msgid "{{#label}} must be a credit card"
-msgstr "{{#label}} peab olema krediitkaart"
+msgstr "{{#label}} peab olema kehtiv krediitkaardinumber"
 
 # Label: string.dataUri
 #: string.dataUri
 msgid "{{#label}} must be a valid dataUri string"
-msgstr "{{#label}} peab olema kehtiv dataUri string"
+msgstr "{{#label}} peab olema kehtiv andme-URI sõne"
 
 # Label: string.domain
 #: string.domain
@@ -476,12 +497,14 @@ msgstr "{{#label}} peab olema kehtiv GUID"
 # Label: string.hex
 #: string.hex
 msgid "{{#label}} must only contain hexadecimal characters"
-msgstr "{{#label}} peab sisaldama ainult kuueteistkümnendmärke"
+msgstr "{{#label}} võib sisaldada ainult kuueteistkümnendsüsteemi numbrimärke"
 
 # Label: string.hexAlign
 #: string.hexAlign
 msgid "{{#label}} hex decoded representation must be byte aligned"
-msgstr "{{#label}} Hex-dekodeeritud esitus peab olema baitide kaupa joondatud"
+msgstr ""
+"{{#label}} peab sisaldama paarisarvu kuueteistkümnendsüsteemi numbrimärke, "
+"et dekodeeritud väärtus koosneks täisbaitidest"
 
 # Label: string.hostname
 #: string.hostname
@@ -491,7 +514,10 @@ msgstr "{{#label}} peab olema kehtiv hostinimi"
 # Label: string.ip
 #: string.ip
 msgid "{{#label}} must be a valid ip address with a {{#cidr}} CIDR"
-msgstr "{{#label}} peab olema kehtiv ip-aadress koos {{#cidr}} CIDR"
+msgstr ""
+"{{#label}} peab olema kehtiv IP-aadress (CIDR: {{if(#cidr == \"required\", "
+"\"nõutav\", if(#cidr == \"optional\", \"valikuline\", if(#cidr == "
+"\"forbidden\", \"keelatud\", #cidr)))}})"
 
 # Label: string.ipVersion
 #: string.ipVersion
@@ -499,13 +525,15 @@ msgid ""
 "{{#label}} must be a valid ip address of one of the following versions "
 "{{#version}} with a {{#cidr}} CIDR"
 msgstr ""
-"{{#label}} peab olema kehtiva ip-aadressi üks järgmistest versioonidest "
-"{{#version}} koos {{#cidr}}-ga CIDR"
+"{{#label}} peab olema kehtiv IP-aadress ühest järgmistest versioonidest: "
+"{{#version}} (CIDR: {{if(#cidr == \"required\", \"nõutav\", if(#cidr == "
+"\"optional\", \"valikuline\", if(#cidr == \"forbidden\", \"keelatud\", "
+"#cidr)))}})"
 
 # Label: string.isoDate
 #: string.isoDate
 msgid "{{#label}} must be in iso format"
-msgstr "{{#label}} peab olema iso formaadis"
+msgstr "{{#label}} peab olema ISO 8601 vormingus"
 
 # Label: string.isoDuration
 #: string.isoDuration
@@ -520,30 +548,30 @@ msgstr "{{#label}} pikkus peab olema {{#limit}} tähemärki"
 # Label: string.lowercase
 #: string.lowercase
 msgid "{{#label}} must only contain lowercase characters"
-msgstr "{{#label}} peab sisaldama ainult väikseid tähemärke"
+msgstr "{{#label}} tähed peavad olema väiketähed"
 
 # Label: string.max
 #: string.max
 msgid ""
 "{{#label}} length must be less than or equal to {{#limit}} characters long"
-msgstr ""
-"{{#label}} pikkus peab olema väiksem või võrdne {{#limit}} tähemärgi "
-"pikkusega"
+msgstr "{{#label}} pikkus võib olla kuni {{#limit}} tähemärki"
 
 # Label: string.min
 #: string.min
 msgid "{{#label}} length must be at least {{#limit}} characters long"
-msgstr "{{#label}} pikkus peab olema vähemalt {{#limit}} tähemärgi pikkune"
+msgstr "{{#label}} pikkus peab olema vähemalt {{#limit}} tähemärki"
 
 # Label: string.normalize
 #: string.normalize
 msgid "{{#label}} must be unicode normalized in the {{#form}} form"
-msgstr "{{#label}} peab olema unicode normaliseeritud kujul {{#form}}"
+msgstr ""
+"{{#label}} peab olema normaliseeritud Unicode'i normaliseerimisvormi "
+"{{#form}} järgi"
 
 # Label: string.token
 #: string.token
 msgid "{{#label}} must only contain alpha-numeric and underscore characters"
-msgstr "{{#label}} peab sisaldama ainult tähtnumbrilisi ja alatähti"
+msgstr "{{#label}} võib sisaldada ainult tähti, numbreid ja alakriipse"
 
 # Label: string.pattern.base
 #: string.pattern.base
@@ -559,66 +587,65 @@ msgstr "{{#label}} väärtusega {:[.]} ei vasta {{#name}} mustrile"
 # Label: string.pattern.invert.base
 #: string.pattern.invert.base
 msgid "{{#label}} with value {:[.]} matches the inverted pattern: {{#regex}}"
-msgstr "{{#label}} väärtusega {:[.]} vastab inverteeritud mustrile: {{#regex}}"
+msgstr "{{#label}} väärtusega {:[.]} vastab keelatud mustrile: {{#regex}}"
 
 # Label: string.pattern.invert.name
 #: string.pattern.invert.name
 msgid "{{#label}} with value {:[.]} matches the inverted {{#name}} pattern"
-msgstr "{{#label}} väärtusega {:[.]} vastab ümberpööratud {{#name}} mustrile"
+msgstr "{{#label}} väärtusega {:[.]} vastab keelatud mustrile {{#name}}"
 
 # Label: string.trim
 #: string.trim
 msgid "{{#label}} must not have leading or trailing whitespace"
-msgstr "{{#label}} ei tohi olla ees- ega tagaotsas tühikuid"
+msgstr "{{#label}} alguses ega lõpus ei tohi olla tühimärke"
 
 # Label: string.uri
 #: string.uri
 msgid "{{#label}} must be a valid uri"
-msgstr "{{#label}} peab olema kehtiv uri"
+msgstr "{{#label}} peab olema kehtiv URI"
 
 # Label: string.uriCustomScheme
 #: string.uriCustomScheme
 msgid ""
 "{{#label}} must be a valid uri with a scheme matching the {{#scheme}} pattern"
-msgstr ""
-"{{#label}} peab olema kehtiv uri, mille skeem vastab {{#scheme}} mustrile"
+msgstr "{{#label}} peab olema kehtiv URI, mille skeem vastab mustrile {{#scheme}}"
 
 # Label: string.uriRelativeOnly
 #: string.uriRelativeOnly
 msgid "{{#label}} must be a valid relative uri"
-msgstr "{{#label}} peab olema kehtiv suhteline uri"
+msgstr "{{#label}} peab olema kehtiv suhteline URI"
 
 # Label: string.uppercase
 #: string.uppercase
 msgid "{{#label}} must only contain uppercase characters"
-msgstr "{{#label}} peab sisaldama ainult suurtähtedega tähemärke"
+msgstr "{{#label}} tähed peavad olema suurtähed"
 
 # Label: symbol.base
 #: symbol.base
 msgid "{{#label}} must be a symbol"
-msgstr "{{#label}} peab olema sümbol"
+msgstr "{{#label}} peab olema Symbol-tüüpi väärtus"
 
 # Label: symbol.map
 #: symbol.map
 msgid "{{#label}} must be one of {{#map}}"
-msgstr "{{#label}} peab olema üks järgmistest {{#map}}"
+msgstr "{{#label}} peab olema üks järgmistest väärtustest: {{#map}}"
 
 # Label: binary.base
 #: binary.base
 msgid "{{#label}} must be a buffer or a string"
-msgstr "{{#label}} peab olema puhver või string"
+msgstr "{{#label}} peab olema puhver või sõne"
 
 # Label: binary.length
 #: binary.length
 msgid "{{#label}} must be {{#limit}} bytes"
-msgstr "{{#label}} peab olema {{#limit}} baiti"
+msgstr "{{#label}} pikkus peab olema {{#limit}} baiti"
 
 # Label: binary.max
 #: binary.max
 msgid "{{#label}} must be less than or equal to {{#limit}} bytes"
-msgstr "{{#label}} peab olema väiksem või võrdne {{#limit}} baidiga"
+msgstr "{{#label}} pikkus võib olla kuni {{#limit}} baiti"
 
 # Label: binary.min
 #: binary.min
 msgid "{{#label}} must be at least {{#limit}} bytes"
-msgstr "{{#label}} peab olema vähemalt {{#limit}} baiti"
+msgstr "{{#label}} pikkus peab olema vähemalt {{#limit}} baiti"

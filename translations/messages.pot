@@ -285,6 +285,13 @@ msgid ""
 "{{:#to}} exists"
 msgstr ""
 
+# Label: object.rename.proto
+#: object.rename.proto
+msgid ""
+"{{#label}} cannot rename {{:#from}} because target {{:#to}} is a reserved "
+"key"
+msgstr ""
+
 # Label: object.schema
 #: object.schema
 msgid "{{#label}} must be a Joi schema of {{#type}} type"
@@ -323,6 +330,16 @@ msgstr ""
 # Label: function.minArity
 #: function.minArity
 msgid "{{#label}} must have an arity greater or equal to {{#n}}"
+msgstr ""
+
+# Label: link.depth
+#: link.depth
+msgid "{{#label}} exceeds maximum recursion depth supported by the runtime"
+msgstr ""
+
+# Label: link.maxRecursion
+#: link.maxRecursion
+msgid "{{#label}} exceeds maximum recursion depth of {{#limit}}"
 msgstr ""
 
 # Label: number.base
