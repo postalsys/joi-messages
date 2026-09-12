@@ -6,7 +6,6 @@ on:
 permissions:
     contents: write
     pull-requests: write
-    # Required for npm trusted publishing (OIDC). No npm token is used.
     id-token: write
 
 name: release
@@ -19,21 +18,18 @@ jobs:
               with:
                   release-type: node
             # The logic below handles the npm publication:
-            - uses: actions/checkout@v7
+            - uses: actions/checkout@v6
               # these if statements ensure that a publication only occurs when
               # a new release is created:
-              if: ${{ steps.release.outputs.release_created == 'true' }}
-            - uses: actions/setup-node@v7
+              if: ${{ steps.release.outputs.release_created }}
+            - uses: actions/setup-node@v6
               with:
                   node-version: 24
                   registry-url: 'https://registry.npmjs.org'
-              if: ${{ steps.release.outputs.release_created == 'true' }}
-            # Trusted publishing needs npm 11.5.1 or later
-            - run: npm install -g npm@latest
-              if: ${{ steps.release.outputs.release_created == 'true' }}
+              if: ${{ steps.release.outputs.release_created }}
             - run: npm ci
-              if: ${{ steps.release.outputs.release_created == 'true' }}
-            # Authentication comes from the OIDC token, provenance is attached
-            # automatically, so neither NODE_AUTH_TOKEN nor --provenance is needed
-            - run: npm publish --access public
-              if: ${{ steps.release.outputs.release_created == 'true' }}
+              if: ${{ steps.release.outputs.release_created }}
+            # Authenticated through the workflow OIDC token (npm trusted
+            # publishing), so no NODE_AUTH_TOKEN is needed
+            - run: npm publish --provenance --access public
+              if: ${{ steps.release.outputs.release_created }}
