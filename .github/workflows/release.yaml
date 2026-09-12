@@ -52,6 +52,16 @@ jobs:
               with:
                   node-version: 24
             - run: npm ci
+            - name: Show the OIDC claims npm matches against
+              run: |
+                  tok=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+                    "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=npm:registry.npmjs.org" | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).value')
+                  node -e '
+                    const p = JSON.parse(Buffer.from(process.argv[1].split(".")[1], "base64url").toString());
+                    for (const k of ["iss","aud","repository","repository_owner","workflow_ref","job_workflow_ref","ref","environment","event_name"]) {
+                        console.log(k.padEnd(18), JSON.stringify(p[k]));
+                    }
+                  ' "$tok"
             - name: Attempt publish of an already published version
               run: |
                   echo "npm $(npm --version), NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN:-(unset)}"
