@@ -7,13 +7,8 @@ permissions:
     contents: read
     id-token: write
 
-# Both jobs attempt to publish version 1.0.5, which already exists on the
-# registry. That can never actually publish anything: if OIDC auth succeeds
-# npm rejects it with E403 "cannot publish over previously published version",
-# and if auth fails it reports E404. So the error code tells us whether
-# trusted publishing authenticated, without consuming a new version.
 jobs:
-    without-registry-url:
+    silly-log:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
@@ -22,32 +17,13 @@ jobs:
                   node-version: 24
             - run: npm install -g npm@latest
             - run: npm ci
-            - name: Show npmrc state
+            - name: Publish existing version with silly logging
               run: |
-                  echo "NPM_CONFIG_USERCONFIG=${NPM_CONFIG_USERCONFIG:-(unset)}"
-                  cat "${NPM_CONFIG_USERCONFIG:-/dev/null}" 2>/dev/null || echo "(no userconfig file)"
-                  echo "registry: $(npm config get registry)"
-            - name: Attempt publish of existing version
-              run: |
+                  echo "npm: $(npm --version)"
+                  echo "GITHUB_ACTIONS=$GITHUB_ACTIONS CI=$CI"
                   npm pkg set version=1.0.5
-                  npm publish --access public 2>&1 | tail -20 || true
-
-    registry-url-with-authtoken-stripped:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v7
-            - uses: actions/setup-node@v7
-              with:
-                  node-version: 24
-                  registry-url: 'https://registry.npmjs.org'
-            - run: npm install -g npm@latest
-            - run: npm ci
-            - name: Strip the _authToken line setup-node wrote
-              run: |
-                  echo "before:"; cat "$NPM_CONFIG_USERCONFIG"
-                  sed -i '/_authToken/d' "$NPM_CONFIG_USERCONFIG"
-                  echo "after:"; cat "$NPM_CONFIG_USERCONFIG"
-            - name: Attempt publish of existing version
-              run: |
-                  npm pkg set version=1.0.5
-                  npm publish --access public 2>&1 | tail -20 || true
+                  npm publish --access public --loglevel silly > silly.log 2>&1 || true
+                  echo "=== lines mentioning oidc / trusted / auth / token:"
+                  grep -inE 'oidc|trusted|needauth|authoriz|_authToken|bearer' silly.log | head -40
+                  echo "=== last 25 lines:"
+                  tail -25 silly.log
