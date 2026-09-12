@@ -26,43 +26,35 @@ jobs:
               # these if statements ensure that a publication only occurs when
               # a new release is created:
               if: ${{ steps.release.outputs.release_created }}
+            # No registry-url here on purpose. It makes setup-node write an
+            # .npmrc with //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+            # and inject a placeholder NODE_AUTH_TOKEN. npm defaults to
+            # registry.npmjs.org anyway, and trusted publishing authenticates
+            # through the workflow OIDC token instead.
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
-                  registry-url: 'https://registry.npmjs.org'
               if: ${{ steps.release.outputs.release_created }}
             - run: npm ci
               if: ${{ steps.release.outputs.release_created }}
-            # Authenticated through the workflow OIDC token (npm trusted
-            # publishing), so no NODE_AUTH_TOKEN is needed
             - run: npm publish --provenance --access public
               if: ${{ steps.release.outputs.release_created }}
 
-    # Temporary diagnostic. Attempts to publish 1.0.5, which already exists on
-    # the registry, so it can never actually publish: E403 means OIDC
-    # authenticated us, E404 means it did not.
+    # Temporary diagnostic, mirrors the publish config above. Attempts to
+    # publish 1.0.5, which already exists on the registry, so it can never
+    # actually publish: E403 means OIDC authenticated us, E404 means it did not.
     oidc-check:
         if: github.event_name == 'workflow_dispatch'
         runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                include:
-                    - name: with-registry-url
-                      registry: 'https://registry.npmjs.org'
-                    - name: without-registry-url
-                      registry: ''
-        name: oidc-check (${{ matrix.name }})
         steps:
             - uses: actions/checkout@v6
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
-                  registry-url: ${{ matrix.registry }}
             - run: npm ci
             - name: Attempt publish of an already published version
               run: |
                   echo "npm $(npm --version), NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN:-(unset)}"
                   npm pkg set version=1.0.5
                   npm publish --access public --loglevel verbose > out.log 2>&1 || true
-                  grep -iE 'oidc|npm error code|npm error 40|need auth' out.log | head -20
+                  grep -iE 'oidc|npm error code|npm error 40|need auth|cannot publish over' out.log | head -20
