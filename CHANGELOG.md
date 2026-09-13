@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/postalsys/joi-messages/compare/v1.2.0...v1.3.0) (2026-09-13)
+
+
+### Features
+
+* Add Spanish, Italian and Turkish translations ([5d832d1](https://github.com/postalsys/joi-messages/commit/5d832d1d547813c28c8ff4c0884648a962344bf9))
+
 ## [1.2.0](https://github.com/postalsys/joi-messages/compare/v1.1.3...v1.2.0) (2026-09-13)
 
 
