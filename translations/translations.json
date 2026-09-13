@@ -6,5 +6,8 @@
     "ja_JP": "ja.po",
     "pl_PL": "pl.po",
     "nl_NL": "nl.po",
-    "sv_SE": "sv.po"
+    "sv_SE": "sv.po",
+    "es_ES": "es.po",
+    "it_IT": "it.po",
+    "tr_TR": "tr.po"
 }
