@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/postalsys/joi-messages/compare/v1.1.3...v1.2.0) (2026-09-13)
+
+
+### Features
+
+* Add Swedish translations ([ce63ef6](https://github.com/postalsys/joi-messages/commit/ce63ef6709b0210a319363bdb889d713ab57ca5f))
+
 ## [1.1.3](https://github.com/postalsys/joi-messages/compare/v1.1.2...v1.1.3) (2026-09-12)
 
 
