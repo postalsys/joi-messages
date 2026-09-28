@@ -20,7 +20,10 @@ const messages = async () => {
             if (!code || !obj?.comments?.reference) {
                 continue;
             }
-            messages[obj.comments.reference] = obj.msgstr[0] || key;
+            // one entry can carry several Joi codes that share the same English message
+            for (let reference of obj.comments.reference.trim().split(/\s+/)) {
+                messages[reference] = obj.msgstr[0] || key;
+            }
         }
 
         if (code.indexOf('_') >= 0) {

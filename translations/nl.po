@@ -54,8 +54,8 @@ msgstr "{{#label}}: het argument {{#arg}} verwijst naar {{:#ref}}; {{#reason}}"
 msgid "{{#label}} is required"
 msgstr "{{#label}} is vereist"
 
-# Label: object.unknown
-#: object.unknown
+# Label: any.unknown, object.unknown
+#: any.unknown object.unknown
 msgid "{{#label}} is not allowed"
 msgstr "{{#label}} is niet toegestaan"
 
@@ -64,8 +64,8 @@ msgstr "{{#label}} is niet toegestaan"
 msgid "{{#label}} does not match all of the required types"
 msgstr "{{#label}} komt niet overeen met alle vereiste typen"
 
-# Label: array.includes
-#: array.includes
+# Label: alternatives.any, alternatives.match, array.includes
+#: alternatives.any alternatives.match array.includes
 msgid "{{#label}} does not match any of the allowed types"
 msgstr "{{#label}} komt met geen van de toegestane typen overeen"
 

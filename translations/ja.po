@@ -48,8 +48,8 @@ msgstr "{{#label}}の引数{{#arg}}が参照する{{:#ref}}に問題がありま
 msgid "{{#label}} is required"
 msgstr "{{#label}}は必須です"
 
-# Label: object.unknown
-#: object.unknown
+# Label: any.unknown, object.unknown
+#: any.unknown object.unknown
 msgid "{{#label}} is not allowed"
 msgstr "{{#label}}は許可されていません"
 
@@ -58,8 +58,8 @@ msgstr "{{#label}}は許可されていません"
 msgid "{{#label}} does not match all of the required types"
 msgstr "{{#label}}は必須の型すべてには一致していません"
 
-# Label: array.includes
-#: array.includes
+# Label: alternatives.any, alternatives.match, array.includes
+#: alternatives.any alternatives.match array.includes
 msgid "{{#label}} does not match any of the allowed types"
 msgstr "{{#label}}は許可されたどの型にも一致していません"
 

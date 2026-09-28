@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "pot": "node gen-pot.js",
+        "test": "node --test test/messages-test.js",
         "update": "rm -rf node_modules package-lock.json && ncu -u && npm install"
     },
     "keywords": [],

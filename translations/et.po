@@ -50,8 +50,8 @@ msgstr "{{#label}} argument {{#arg}} viitab väärtusele {{:#ref}}, mis {{#reaso
 msgid "{{#label}} is required"
 msgstr "{{#label}} on nõutav"
 
-# Label: object.unknown
-#: object.unknown
+# Label: any.unknown, object.unknown
+#: any.unknown object.unknown
 msgid "{{#label}} is not allowed"
 msgstr "{{#label}} ei ole lubatud"
 
@@ -60,8 +60,8 @@ msgstr "{{#label}} ei ole lubatud"
 msgid "{{#label}} does not match all of the required types"
 msgstr "{{#label}} ei vasta kõigile nõutavatele tüüpidele"
 
-# Label: array.includes
-#: array.includes
+# Label: alternatives.any, alternatives.match, array.includes
+#: alternatives.any alternatives.match array.includes
 msgid "{{#label}} does not match any of the allowed types"
 msgstr "{{#label}} ei vasta ühelegi lubatud tüübile"
 

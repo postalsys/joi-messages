@@ -5,6 +5,8 @@ const gettextParser = require('gettext-parser');
 const fs = require('fs');
 const Path = require('path');
 
+// Keyed by the English source: several Joi codes share a message (any.unknown and object.unknown,
+// alternatives.any, alternatives.match and array.includes), so one entry lists every code as a reference
 const messages = new Map();
 
 for (let key of joi._types) {
@@ -15,13 +17,11 @@ for (let key of joi._types) {
 
     for (let msg of Object.keys(msgs)) {
         if (msgs[msg] && typeof msgs[msg] === 'object' && msgs[msg]?.source) {
-            messages.set(msg, {
-                msgid: msgs[msg].source,
-                comments: {
-                    translator: `Label: ${msg}`,
-                    reference: msg
-                }
-            });
+            let source = msgs[msg].source;
+            if (!messages.has(source)) {
+                messages.set(source, new Set());
+            }
+            messages.get(source).add(msg);
         }
     }
 }
@@ -44,8 +44,15 @@ const data = {
     }
 };
 
-for (let [, value] of messages) {
-    data.translations[''][value.msgid] = value;
+for (let [msgid, codes] of messages) {
+    codes = Array.from(codes).sort();
+    data.translations[''][msgid] = {
+        msgid,
+        comments: {
+            translator: `Label: ${codes.join(', ')}`,
+            reference: codes.join(' ')
+        }
+    };
 }
 
 fs.writeFileSync(Path.join(__dirname, 'translations', 'messages.pot'), gettextParser.po.compile(data));

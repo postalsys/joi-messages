@@ -51,8 +51,8 @@ msgstr ""
 msgid "{{#label}} is required"
 msgstr "{{#label}} zorunlu"
 
-# Label: object.unknown
-#: object.unknown
+# Label: any.unknown, object.unknown
+#: any.unknown object.unknown
 msgid "{{#label}} is not allowed"
 msgstr "{{#label}} alanına izin verilmiyor"
 
@@ -61,8 +61,8 @@ msgstr "{{#label}} alanına izin verilmiyor"
 msgid "{{#label}} does not match all of the required types"
 msgstr "{{#label}} gerekli türlerin tümüne uymuyor"
 
-# Label: array.includes
-#: array.includes
+# Label: alternatives.any, alternatives.match, array.includes
+#: alternatives.any alternatives.match array.includes
 msgid "{{#label}} does not match any of the allowed types"
 msgstr "{{#label}} izin verilen türlerden hiçbirine uymuyor"
 
