@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/postalsys/joi-messages/compare/v1.3.0...v1.3.1) (2026-09-28)
+
+
+### Bug Fixes
+
+* keep a translation for every Joi code that shares an English message ([d70357d](https://github.com/postalsys/joi-messages/commit/d70357da83592e61cb57a0727c67b9b9356ea94b))
+
 ## [1.3.0](https://github.com/postalsys/joi-messages/compare/v1.2.0...v1.3.0) (2026-09-13)
 
 
