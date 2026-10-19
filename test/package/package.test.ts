@@ -24,7 +24,7 @@ const translationFiles = fs.readdirSync(path.join(root, 'translations'));
 describe('Built package', { timeout: 120 * 1000 }, () => {
     it('ships both module formats with type declarations', () => {
         for (const format of ['esm', 'cjs']) {
-            for (const file of ['index.js', 'index.d.ts', 'package-root.js']) {
+            for (const file of ['index.js', 'index.d.ts', 'messages-data.js']) {
                 assert.ok(fs.existsSync(path.join(root, 'dist', format, file)), `${format}/${file}`);
             }
         }
@@ -48,10 +48,10 @@ describe('Built package', { timeout: 120 * 1000 }, () => {
             'package.json',
             'dist/cjs/index.js',
             'dist/cjs/index.d.ts',
-            'dist/cjs/package-root.js',
+            'dist/cjs/messages-data.js',
             'dist/cjs/package.json',
             'dist/esm/index.js',
-            'dist/esm/package-root.js',
+            'dist/esm/messages-data.js',
             'dist/esm/package.json',
             // EmailEngine lists node_modules/@postalsys/joi-messages/translations/* as pkg assets
             ...translationFiles.map(file => `translations/${file}`)
@@ -77,9 +77,34 @@ describe('Built package', { timeout: 120 * 1000 }, () => {
             assert.equal(joiMessages.default.messages, joiMessages.messages);
         });
 
-        it('reads the translations from the package root', async () => {
-            const result = await require(packageName).messages();
-            assert.equal(result.de['any.unknown'], '{{#label}} ist nicht erlaubt');
+        it('has no runtime dependencies and loads nothing but its own build', () => {
+            assert.equal(pkg.dependencies, undefined);
+            const script = `require(${JSON.stringify(path.join(root, pkg.main))}); console.log(JSON.stringify(Object.keys(require.cache)))`;
+            const result = spawnSync(process.execPath, ['-e', script], { encoding: 'utf8' });
+            assert.equal(result.status, 0, result.stderr);
+            const cjsRoot = path.join(root, 'dist', 'cjs');
+            assert.deepEqual(JSON.parse(result.stdout).sort(), [path.join(cjsRoot, 'index.js'), path.join(cjsRoot, 'messages-data.js')]);
+        });
+
+        it('returns the translations without reading translations/ at runtime', async () => {
+            // a copy of the build alone, with no translations/ next to it
+            const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'joi-messages-dist-'));
+            try {
+                fs.cpSync(path.join(root, 'dist'), path.join(dir, 'dist'), { recursive: true });
+                const copy = require(path.join(dir, 'dist', 'cjs', 'index.js'));
+                const result = await copy.messages();
+                assert.equal(result.de['any.unknown'], '{{#label}} ist nicht erlaubt');
+                assert.deepEqual(result, await require(packageName).messages());
+            } finally {
+                fs.rmSync(dir, { recursive: true, force: true });
+            }
+        });
+
+        it('returns a new object on every call', async () => {
+            const { messages } = require(packageName);
+            const first = await messages();
+            first.de['any.unknown'] = 'changed';
+            assert.equal((await messages()).de['any.unknown'], '{{#label}} ist nicht erlaubt');
         });
 
         it('exposes the translation files by path', () => {

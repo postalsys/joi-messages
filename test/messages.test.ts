@@ -1,11 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import joi from 'joi';
 import type * as JoiMessages from '../src/index.js';
 
 // The built ES module build, resolved through the package.json exports map (built by pretest).
-// src/package-root.ts locates translations/ relative to dist/, so the sources are not run
+// The message map is generated into dist/ by scripts/build.js, so the sources are not run
 // directly. A non-literal specifier keeps the type-check independent of dist/.
 const packageName: string = '@postalsys/joi-messages';
 const { messages } = (await import(packageName)) as typeof JoiMessages;
@@ -56,4 +57,17 @@ test('locale codes are reduced to their language part', async () => {
         Object.keys(result),
         Object.keys(translations).map(code => code.split('_')[0])
     );
+});
+
+// The result 1.4.0 produced by parsing translations/*.po at runtime, from before the parsing moved
+// into the build. A change to translations/ (or to the generator in scripts/build.js) changes the
+// hash: check that the difference is the intended one, then record the new value here.
+const MESSAGES_SHA256 = 'e9892ee9bc43c7845ce1cb58283133982968673dd7389b36206257aeb6681d48';
+
+test('the generated messages are the ones the runtime parser produced', async () => {
+    const hash = crypto
+        .createHash('sha256')
+        .update(JSON.stringify(await messages()))
+        .digest('hex');
+    assert.equal(hash, MESSAGES_SHA256);
 });

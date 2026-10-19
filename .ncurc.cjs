@@ -3,7 +3,9 @@
 module.exports = {
     upgrade: true,
     reject: [
-        // 8.x is ESM-only; the CommonJS build is bundled by pkg in EmailEngine
+        // A devDependency only, scripts/build.js parses translations/*.po with it. 8.x is ESM-only
+        // and the build script loads it with require(); the generated messages are pinned against
+        // the 7.x output (test/messages.test.ts)
         'gettext-parser'
     ],
     target: name => {

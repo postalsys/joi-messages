@@ -3,8 +3,7 @@
 // CommonJS smoke test for the built package, run by `npm run test:cjs` as plain Node with
 // NODE_OPTIONS=--no-experimental-require-module. EmailEngine bundles this package into a
 // @yao-pkg/pkg binary, and pkg can only load a CommonJS module graph. Node 22+ enables
-// require(esm) by default, which would hide an ES-module-only dependency (gettext-parser 8 is
-// one). With the flag set, any ES module reached through require() throws ERR_REQUIRE_ESM here
+// require(esm) by default, which would hide an ES module reached through require(). With the flag set, any ES module reached through require() throws ERR_REQUIRE_ESM here
 // instead of in a binary. Kept as plain JavaScript on purpose: running it through tsx would let
 // its loader transpile an ES module dependency to CommonJS and mask exactly that failure.
 
@@ -26,7 +25,7 @@ async function run() {
     // the old main file path still resolves to the same module
     assert.strictEqual(require('@postalsys/joi-messages/index.js'), joiMessages);
 
-    // translations/ is read from the package root, not from dist/cjs
+    // the translations compiled into the build
     const locales = await joiMessages.messages();
     assert.strictEqual(locales.de['any.unknown'], '{{#label}} ist nicht erlaubt');
     assert.strictEqual(locales.et['any.required'], '{{#label}} on nõutav');
