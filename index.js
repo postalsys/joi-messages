@@ -10,6 +10,8 @@ const messages = async () => {
     const jsonContent = await fs.promises.readFile(Path.join(__dirname, 'translations', 'translations.json'), 'utf-8');
     const translationList = JSON.parse(jsonContent);
     for (let code of Object.keys(translationList)) {
+        // sequential on purpose: a handful of small locale files, read once at startup
+        // eslint-disable-next-line no-await-in-loop
         let fileContents = await fs.promises.readFile(Path.join(__dirname, 'translations', translationList[code]));
         let translations = gettextParser.po.parse(fileContents);
 

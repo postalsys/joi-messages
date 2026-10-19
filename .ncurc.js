@@ -1,9 +1,9 @@
+'use strict';
+
 module.exports = {
     upgrade: true,
     reject: [
-        // Block package upgrades that moved to ESM
-        'gettext-parser',
-
-        'eslint-config-prettier'
+        // 8.x is ESM-only; this package is CommonJS and is bundled by pkg in EmailEngine
+        'gettext-parser'
     ]
 };
