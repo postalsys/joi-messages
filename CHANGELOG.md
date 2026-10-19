@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/postalsys/joi-messages/compare/v1.3.1...v1.4.0) (2026-10-19)
+
+
+### Features
+
+* migrate to TypeScript with ES module and CommonJS builds ([16e0bba](https://github.com/postalsys/joi-messages/commit/16e0bbaa08f4ba49099a63c68b518905e2c34cb3))
+
 ## [1.3.1](https://github.com/postalsys/joi-messages/compare/v1.3.0...v1.3.1) (2026-09-28)
 
 
