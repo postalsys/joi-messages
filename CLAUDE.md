@@ -5,50 +5,58 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm test                  # run the suite (node --test test/messages-test.js)
+npm run build             # produce dist/ (also runs on install and before publish via `prepare`, and before every test script)
+npm test                  # build, then run the suite (node --import tsx --test over test/**/*.test.ts)
 npm run test:coverage     # same suite under c8
-npm run test:cjs          # the suite with require(esm) disabled (CommonJS guard)
-npm run lint              # eslint .
+npm run test:cjs          # build, then the CommonJS smoke test with require(esm) disabled
+npm run lint              # type-check (tsc -p tsconfig.json), then eslint .
 npm run lint:fix          # eslint . --fix
-npm run format            # prettier --write .
-npm run format:check      # prettier --check .
+npm run typecheck         # the type-check alone
+npm run format            # prettier --write
+npm run format:check      # prettier --check
 npm run pot               # regenerate translations/messages.pot from the installed joi
 npm run update            # rm -rf node_modules package-lock.json && ncu -u && npm install
 ```
 
-Run a single test by name with Node's built-in test runner:
+Run a single test by name with Node's built-in test runner (build first):
 
 ```bash
-node --test --test-name-pattern="sharing an English message" test/messages-test.js
+node --import tsx --test --test-name-pattern="sharing an English message" test/messages.test.ts
 ```
 
 ## Architecture
 
-A tiny CommonJS package that ships translations of Joi's validation error messages for EmailEngine.
+A tiny package that ships translations of Joi's validation error messages for EmailEngine. It is written in TypeScript under `src/` and published as a dual package: ES modules in `dist/esm/` and CommonJS in `dist/cjs/`, each with type declarations. The layout follows `../pubface`, `../nodemailer` and `../imapflow`.
 
-- `index.js` exports one async function, `messages()`. It reads `translations/translations.json` (a map of locale code such as `de_DE` to a `.po` file), parses each `.po` file with `gettext-parser`, and returns `{ <language>: { <joi code>: <template> } }`. The result is keyed by the language part of the locale (`de_DE` becomes `de`). Each entry's gettext reference comment (`#: any.unknown object.unknown`) lists the Joi codes it applies to; an empty `msgstr` falls back to the English `msgid`.
-- `gen-pot.js` (`npm run pot`) walks every type in the installed `joi` (a devDependency), collects each message template and writes `translations/messages.pot`. Several Joi codes share one English message (for example `any.unknown` and `object.unknown`), so one POT entry lists every code that uses it as space-separated references. Do not split them back into one entry per code: gettext keys on `msgid`, so duplicates would collapse and drop translations (fixed in 1.3.1).
-- `translations/*.po` are the translations, maintained with Poedit (mostly machine translated). The `.mo` files beside them are Poedit output and are not read by `index.js`. Adding a language means adding its `.po` file and an entry in `translations.json`.
-- Tests (`test/messages-test.js`) assert that every Joi code resolves in every locale and that shared-message codes keep their translation.
+- `src/index.ts` exports one async function, `messages()`, the `Messages` / `LanguageMessages` types, and a default export object `{ messages }`. `require('@postalsys/joi-messages')` returns an object with `messages` (plus `default`), the shape the JavaScript package had. `messages()` reads `translations/translations.json` (a map of locale code such as `de_DE` to a `.po` file), parses each `.po` file with `gettext-parser`, and returns `{ <language>: { <joi code>: <template> } }`. The result is keyed by the language part of the locale (`de_DE` becomes `de`). Each entry's gettext reference comment (`#: any.unknown object.unknown`) lists the Joi codes it applies to; an empty `msgstr` falls back to the English `msgid`.
+- `src/package-root.ts` resolves the package root, where `translations/` lives, from the module's own location two levels down (`dist/<format>/`). It uses `import.meta.url`, which does not exist in CommonJS, so `scripts/build.js` replaces its CommonJS output with the `__dirname` equivalent. Because the path is relative to `dist/`, the sources are never run directly: the tests import the built package by name.
+- `src/gettext-parser.d.ts` declares the part of `gettext-parser` 7.x the code reads (7.x ships no types and `@types/gettext-parser` tracks the ESM-only 8.x).
+- `scripts/build.js` runs `tsc` with `tsconfig.esm.json` (`module: nodenext`) and `tsconfig.cjs.json` (`module: commonjs`, `--noCheck` since the ESM compile already type-checked), rewrites `dist/cjs/package-root.js`, and writes a `package.json` with the module format into each output directory. `dist/` is gitignored and is what gets published.
+- `package.json` `exports` maps `.` (import and require), `./index` and `./index.js` (the old main file, to the CommonJS build), `./package.json` and `./translations/*`. `files` publishes `dist/` and `translations/`.
+- `scripts/gen-pot.js` (`npm run pot`, an ES module script) walks every type in the installed `joi` (a devDependency), collects each message template and writes `translations/messages.pot`. Several Joi codes share one English message (for example `any.unknown` and `object.unknown`), so one POT entry lists every code that uses it as space-separated references. Do not split them back into one entry per code: gettext keys on `msgid`, so duplicates would collapse and drop translations (fixed in 1.3.1).
+- `translations/*.po` are the translations, maintained with Poedit (mostly machine translated). The `.mo` files beside them are Poedit output and are not read by the code. Adding a language means adding its `.po` file and an entry in `translations.json`.
+- Tests (TypeScript, `node:test` through tsx, all against the build): `test/messages.test.ts` asserts that every Joi code resolves in every locale and that shared-message codes keep their translation; `test/package/package.test.ts` checks both builds, the exports map (old paths and `translations/*` included), the packed file list (translations included, sources left out), the CommonJS build reading translations from the package root, and consumers type-checked against the shipped declarations; `test/package/cjs-smoke.cjs` (`npm run test:cjs`, plain JavaScript on purpose) requires the package by name and loads translations through the CommonJS entry.
+- Compiler settings: `tsconfig.base.json` (strict, `exactOptionalPropertyTypes`, `erasableSyntaxOnly`, `isolatedModules`, `stripInternal`). `@types/node` stays on the 20.x line and `typescript` on 6.x (`.ncurc.cjs`). Configs that must stay CommonJS use `.cjs` (`.ncurc.cjs`, `.prettierrc.cjs`) because `package.json` has `"type": "module"`.
 
 ## Consumers
 
-EmailEngine (`../emailengine`) is the consumer: `lib/translations.js` calls `messages()` at startup to localize Joi validation errors. EmailEngine's `pkg` config bundles `node_modules/@postalsys/joi-messages/translations/*` as assets, so the runtime keeps reading the translation files from that directory.
+EmailEngine (`../emailengine`) is the consumer: `lib/translations.js` does `require('@postalsys/joi-messages')` and calls `messages()` at startup to localize Joi validation errors. EmailEngine's `pkg` config bundles `node_modules/@postalsys/joi-messages/translations/*` as assets, so the runtime keeps reading the translation files from that directory.
 
 ## Platform constraints
 
 EmailEngine ships as a standalone binary built with `@yao-pkg/pkg`. That binary snapshots a CommonJS module graph and cannot load ES modules, and EmailEngine supports Node 20 and later. Two rules follow:
 
 - **Node.js 20 is the minimum.** Runtime code, tests and tooling must work on Node 20, 22 and 24 (`engines.node` is `>=20.0.0`; CI runs all three).
-- **Everything that reaches runtime must be genuinely CommonJS.** `require()` of this package and of every runtime dependency must work with `--no-experimental-require-module`: Node 22+ (and 20.19) load ESM through `require()` by default, which would hide an ESM-only dependency until the pkg binary fails. A CJS wrapper around a dynamic `import()` does not count. Never add or upgrade to an ESM-only dependency; pin the last CommonJS major in `.ncurc.js` (`reject` or `target`) with a comment giving the reason. `gettext-parser` is rejected there because 8.x is ESM-only; stay on 7.x.
+- **Everything that reaches runtime must be genuinely CommonJS.** The CommonJS build holds the real code, and `require()` of this package and of every runtime dependency must work with `--no-experimental-require-module`: Node 22+ (and 20.19) load ESM through `require()` by default, which would hide an ESM-only dependency until the pkg binary fails. A CJS wrapper around a dynamic `import()` does not count. Never add or upgrade to an ESM-only dependency; pin the last CommonJS major in `.ncurc.cjs` (`reject` or `target`) with a comment giving the reason. `gettext-parser` is rejected there because 8.x is ESM-only; stay on 7.x.
 
-Check with `npm run test:cjs`, which runs the suite under `NODE_OPTIONS=--no-experimental-require-module`. CI runs it on Node 22.x and 24.x, the versions where require(esm) is on by default.
+Check with `npm run test:cjs`, which runs `test/package/cjs-smoke.cjs` under `NODE_OPTIONS=--no-experimental-require-module`. CI runs it on Node 22.x, 24.x and latest, the versions where require(esm) is on by default.
 
 ## Critical constraints
 
-- **Keep the `translations/` layout.** EmailEngine's binary build lists that directory as a `pkg` asset by path.
+- **Keep the `translations/` layout.** It stays at the package root with its file names, and in `files`. EmailEngine's binary build lists that directory as a `pkg` asset by path, and both builds read it from `<package root>/translations`.
+- **Keep every old require path.** `require('@postalsys/joi-messages')` and `.../index.js` must keep returning the same object.
 - **After a joi upgrade**, run `npm run pot`, merge the new POT into each `.po` file, and make sure `npm test` passes (it fails for any Joi code missing from a locale).
-- **Releases are automated via release-please.** The version in `package.json` and `CHANGELOG.md` are owned by the bot; do not bump them by hand. npm publication happens from `.github/workflows/release.yaml` through trusted publishing (OIDC), so the workflow filename is load-bearing.
+- **Releases are automated via release-please.** The version in `package.json` and `CHANGELOG.md` are owned by the bot; do not bump them by hand. npm publication happens from `.github/workflows/release.yaml` through trusted publishing (OIDC), so the workflow filename is load-bearing. Its `npm ci` runs `prepare`, which builds `dist/` before `npm publish`.
 
 ## Conventions
 
@@ -68,7 +76,7 @@ These mirror the conventions used across Postal Systems projects (see `../emaile
 **Before committing code changes**
 
 1. `npm run format` and `npm run lint`
-2. `npm test`
+2. `npm test` and `npm run test:cjs`
 3. For non-trivial changes, consider `/simplify` and `/security-review`.
 
 **After pushing**

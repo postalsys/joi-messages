@@ -1,9 +1,12 @@
-'use strict';
+// Regenerates translations/messages.pot from the installed joi (npm run pot)
 
-const joi = require('joi');
-const gettextParser = require('gettext-parser');
-const fs = require('fs');
-const Path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import gettextParser from 'gettext-parser';
+import joi from 'joi';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 // Keyed by the English source: several Joi codes share a message (any.unknown and object.unknown,
 // alternatives.any, alternatives.match and array.includes), so one entry lists every code as a reference
@@ -55,5 +58,5 @@ for (let [msgid, codes] of messages) {
     };
 }
 
-fs.writeFileSync(Path.join(__dirname, 'translations', 'messages.pot'), gettextParser.po.compile(data));
+fs.writeFileSync(path.join(root, 'translations', 'messages.pot'), gettextParser.po.compile(data));
 console.log('done');
