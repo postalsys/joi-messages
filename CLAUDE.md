@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm test                  # run the suite (node --test test/messages-test.js)
 npm run test:coverage     # same suite under c8
+npm run test:cjs          # the suite with require(esm) disabled (CommonJS guard)
 npm run lint              # eslint .
 npm run lint:fix          # eslint . --fix
 npm run format            # prettier --write .
@@ -34,9 +35,17 @@ A tiny CommonJS package that ships translations of Joi's validation error messag
 
 EmailEngine (`../emailengine`) is the consumer: `lib/translations.js` calls `messages()` at startup to localize Joi validation errors. EmailEngine's `pkg` config bundles `node_modules/@postalsys/joi-messages/translations/*` as assets, so the runtime keeps reading the translation files from that directory.
 
+## Platform constraints
+
+EmailEngine ships as a standalone binary built with `@yao-pkg/pkg`. That binary snapshots a CommonJS module graph and cannot load ES modules, and EmailEngine supports Node 20 and later. Two rules follow:
+
+- **Node.js 20 is the minimum.** Runtime code, tests and tooling must work on Node 20, 22 and 24 (`engines.node` is `>=20.0.0`; CI runs all three).
+- **Everything that reaches runtime must be genuinely CommonJS.** `require()` of this package and of every runtime dependency must work with `--no-experimental-require-module`: Node 22+ (and 20.19) load ESM through `require()` by default, which would hide an ESM-only dependency until the pkg binary fails. A CJS wrapper around a dynamic `import()` does not count. Never add or upgrade to an ESM-only dependency; pin the last CommonJS major in `.ncurc.js` (`reject` or `target`) with a comment giving the reason. `gettext-parser` is rejected there because 8.x is ESM-only; stay on 7.x.
+
+Check with `npm run test:cjs`, which runs the suite under `NODE_OPTIONS=--no-experimental-require-module`. CI runs it on Node 22.x and 24.x, the versions where require(esm) is on by default.
+
 ## Critical constraints
 
-- **CommonJS only, never ESM.** EmailEngine is packaged into standalone binaries with `pkg`, which cannot reliably load pure-ESM packages. `.ncurc.js` rejects `gettext-parser` upgrades because 8.x is ESM-only; do not bump it or add ESM-only dependencies.
 - **Keep the `translations/` layout.** EmailEngine's binary build lists that directory as a `pkg` asset by path.
 - **After a joi upgrade**, run `npm run pot`, merge the new POT into each `.po` file, and make sure `npm test` passes (it fails for any Joi code missing from a locale).
 - **Releases are automated via release-please.** The version in `package.json` and `CHANGELOG.md` are owned by the bot; do not bump them by hand. npm publication happens from `.github/workflows/release.yaml` through trusted publishing (OIDC), so the workflow filename is load-bearing.
