@@ -11,6 +11,7 @@
         "pot": "node gen-pot.js",
         "test": "node --test test/messages-test.js",
         "test:coverage": "c8 npm test",
+        "test:cjs": "NODE_OPTIONS=--no-experimental-require-module npm test",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
