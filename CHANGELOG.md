@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/postalsys/joi-messages/compare/v1.4.0...v1.4.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* drop gettext-parser from the runtime dependencies ([23e1143](https://github.com/postalsys/joi-messages/commit/23e11436d8acd5ab79cd7215bf88c021dfd0446e))
+
 ## [1.4.0](https://github.com/postalsys/joi-messages/compare/v1.3.1...v1.4.0) (2026-10-19)
 
 
