@@ -43,7 +43,8 @@ describe('Built package', { timeout: 120 * 1000 }, () => {
         // --ignore-scripts: prepare would rebuild dist/ under the running suite
         const result = spawnSync('npm', ['pack', '--dry-run', '--json', '--ignore-scripts'], { cwd: root, encoding: 'utf8' });
         assert.equal(result.status, 0, result.stderr);
-        const files: string[] = JSON.parse(result.stdout)[0].files.map((file: { path: string }) => file.path);
+        // npm 12 keys the report by package name, older npm returns an array
+        const files: string[] = Object.values<{ files: { path: string }[] }>(JSON.parse(result.stdout))[0].files.map((file: { path: string }) => file.path);
         for (const required of [
             'package.json',
             'dist/cjs/index.js',
