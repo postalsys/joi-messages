@@ -58,5 +58,9 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/postalsys/joi-messages.git"
+    },
+    "overrides": {
+        "glob": "14.0.6",
+        "minimatch": "11.0.8"
     }
 }
